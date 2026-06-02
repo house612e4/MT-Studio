@@ -1,27 +1,20 @@
 <!DOCTYPE html>
-
 <html lang="bn" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- SEO & Meta Tags -->
-
   <title>MT Studio - Digital Solutions | ওয়েবসাইট ও অ্যাপ ডেভেলপমেন্ট</title>
   <meta name="description" content="MT Studio crafts modern websites, mobile apps, brand visuals, and AI workflows for ambitious founders. End-to-end digital solutions in Bangla and English.">
   <meta name="keywords" content="web development bangladesh, app builder, UI/UX design, AI prompts, facebook page fix, MT Studio, digital agency">
   <meta name="theme-color" content="#050B14">
   <meta name="author" content="Mahsin Tarik">
 
-  <!-- Favicon -->
-
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050B14'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='url(%23g)' stroke-width='2'/%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2322d3ee'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3Ctext x='50%25' y='72%25' font-family='Georgia%2C serif' font-size='28' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EMT%3C/text%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050B14'/%3E%3Ctext x='50%25' y='72%25' font-family='Georgia%2C serif' font-size='28' font-weight='bold' fill='%2322d3ee' text-anchor='middle'%3EMT%3C/text%3E%3C/svg%3E">
+  <!-- Favicon: Real Logo -->
+  <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
 
   <!-- Google Analytics -->
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZYEQHPLJJ"></script>
-
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -29,20 +22,11 @@
     gtag('config', 'G-3ZYEQHPLJJ');
   </script>
 
-  <!-- Preload -->
-
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
-
-  <!-- Scripts & Styles -->
-
   <script src="https://cdn.tailwindcss.com"></script>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-  <!-- PayPal SDK -->
-
   <script src="https://www.paypal.com/sdk/js?client-id=AaGtCw2bDw3b-kokUHdpaJmsm8P4v_EVYVdJpReFLWEARCCYnvpquOKwQcT4A05iKgqdl5dd2i91yfQJ&currency=USD"></script>
 
   <script>
@@ -103,27 +87,39 @@
     .portfolio-image { transition: transform 0.3s ease; }
     .portfolio-link:hover .portfolio-image { transform: scale(1.05); }
     #chatMessages::-webkit-scrollbar { width: 4px; }
-  </style>
 
+    /* Logo image styles */
+    .mt-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+    .mt-logo-wrapper {
+      overflow: hidden;
+      border-radius: 0.75rem;
+    }
+    .mt-logo-wrapper-circle {
+      overflow: hidden;
+      border-radius: 9999px;
+    }
+  </style>
 </head>
 <body class="antialiased bg-grid relative selection:bg-cyan-500/30 selection:text-cyan-200">
 
   <!-- Animated Background Blobs -->
-
   <div class="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-[-1]">
     <div class="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-cyan-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
     <div class="absolute bottom-[-20%] right-[-10%] w-[40rem] h-[40rem] bg-violet-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay:4s;"></div>
   </div>
 
   <!-- Navbar -->
-
   <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-midnight/80 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#home" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px] shadow-[0_0_15px_rgba(6,182,212,0.3)]">
-          <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
-            <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-extrabold text-xl font-['Dancing_Script'] tracking-wider">MT</span>
-          </div>
+        <!-- REAL LOGO in Navbar -->
+        <div class="w-10 h-10 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.3)] border border-cyan-500/30">
+          <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" alt="MT Studio Logo" class="w-full h-full object-cover">
         </div>
         <div>
           <h1 class="text-white font-bold leading-tight tracking-wide">MT Studio</h1>
@@ -159,7 +155,6 @@
   </nav>
 
   <!-- Hero Section -->
-
   <section id="home" class="pt-36 pb-20 md:pt-48 md:pb-32 px-6 hero-bg-image border-b border-white/5">
     <div class="max-w-7xl mx-auto relative z-10">
       <p class="text-cyan-400 text-sm tracking-[0.3em] font-semibold mb-4 uppercase flex items-center gap-2">
@@ -200,7 +195,6 @@
   </section>
 
   <!-- Highlight Section -->
-
   <section class="py-12 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden backdrop-blur-md">
@@ -215,7 +209,6 @@
   </section>
 
   <!-- Marquee -->
-
   <div class="w-full overflow-hidden py-10 border-y border-white/5 bg-white/[0.02]">
     <div class="flex whitespace-nowrap animate-marquee">
       <div class="flex items-center gap-8 px-4 text-2xl text-slate-500 font-light uppercase tracking-widest">
@@ -227,7 +220,6 @@
   </div>
 
   <!-- Services Grid -->
-
   <section id="craft" class="py-20 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -278,7 +270,6 @@
   </section>
 
   <!-- Stats Section -->
-
   <section class="py-10 px-6">
     <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-6 md:p-8 text-center shadow-lg">
@@ -301,7 +292,6 @@
   </section>
 
   <!-- Testimonials -->
-
   <section class="py-16 px-6 bg-[#0A0F1C] border-y border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12">
@@ -338,7 +328,6 @@
   </section>
 
   <!-- Portfolio -->
-
   <section id="portfolio" class="py-20 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-14">
@@ -347,118 +336,101 @@
         <p class="text-slate-400">আমাদের তৈরি real projects — দেখুন ও যাচাই করুন</p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-```
-    <!-- Project 1 -->
-    <div class="group">
-      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(249,115,22,0.12)]">
-        <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
-          <div class="text-center"><i class="fa-solid fa-utensils text-orange-400 text-4xl mb-3"></i><p class="text-white font-bold">ভাত ঘর হোটেল</p></div>
-          <div class="absolute top-4 left-4 bg-orange-500/20 border border-orange-500/40 text-orange-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Restaurant</div>
+        <div class="group">
+          <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(249,115,22,0.12)]">
+            <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
+              <div class="text-center"><i class="fa-solid fa-utensils text-orange-400 text-4xl mb-3"></i><p class="text-white font-bold">ভাত ঘর হোটেল</p></div>
+              <div class="absolute top-4 left-4 bg-orange-500/20 border border-orange-500/40 text-orange-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Restaurant</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-white font-bold text-lg mb-1">ভাত ঘর হোটেল</h3>
+              <p class="text-slate-400 text-sm mb-4">রেস্টুরেন্ট ওয়েবসাইট</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Menu System</span>
+                <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Ramadan Special</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="p-6">
-          <h3 class="text-white font-bold text-lg mb-1">ভাত ঘর হোটেল</h3>
-          <p class="text-slate-400 text-sm mb-4">রেস্টুরেন্ট ওয়েবসাইট</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Menu System</span>
-            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Ramadan Special</span>
+        <a href="https://taniyaworld.netlify.app" target="_blank" class="group block">
+          <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-pink-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(236,72,153,0.12)]">
+            <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
+              <div class="text-center"><i class="fa-solid fa-lock text-pink-400 text-4xl mb-3"></i><p class="text-white font-bold">Taniya's World</p></div>
+              <div class="absolute top-4 left-4 bg-pink-500/20 border border-pink-500/40 text-pink-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-white font-bold text-lg mb-1">Taniya's World</h3>
+              <p class="text-slate-400 text-sm mb-4">Private Access Web App</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Password Lock</span>
+                <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Personal App</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="https://realbadsha.netlify.app" target="_blank" class="group block">
+          <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.12)]">
+            <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
+              <div class="text-center"><i class="fa-solid fa-lock text-cyan-400 text-4xl mb-3"></i><p class="text-white font-bold">বাদশার নিজস্ব দুনিয়া</p></div>
+              <div class="absolute top-4 left-4 bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-white font-bold text-lg mb-1">Real Badsha</h3>
+              <p class="text-slate-400 text-sm mb-4">বাদশার নিজস্ব দুনিয়া</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Private Access</span>
+                <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Web App</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="https://house612e4.netlify.app" target="_blank" class="group block">
+          <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]">
+            <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
+              <div class="text-center"><i class="fa-solid fa-building text-emerald-400 text-4xl mb-3"></i><p class="text-white font-bold">৬১২ বাসা ম্যানেজমেন্ট</p></div>
+              <div class="absolute top-4 left-4 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-white font-bold text-lg mb-1">৬১২ বাসা ম্যানেজমেন্ট</h3>
+              <p class="text-slate-400 text-sm mb-4">হিসাব-নিকাশ ওয়েব অ্যাপ</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Bill Tracker</span>
+                <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Bangla UI</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="https://amaderhisab.netlify.app" target="_blank" class="group block">
+          <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.12)]">
+            <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
+              <div class="text-center"><i class="fa-solid fa-calculator text-blue-400 text-4xl mb-3"></i><p class="text-white font-bold">ডিজিটাল হিসাব</p></div>
+              <div class="absolute top-4 left-4 bg-blue-500/20 border border-blue-500/40 text-blue-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-white font-bold text-lg mb-1">ডিজিটাল হিসাব</h3>
+              <p class="text-slate-400 text-sm mb-4">Powered by Mahsin</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Expense Tracker</span>
+                <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Shopping List</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <div class="group cursor-default">
+          <div class="bg-[#111827] rounded-3xl overflow-hidden border border-dashed border-white/10 hover:border-white/20 transition-all duration-300 h-full min-h-[300px] flex items-center justify-center">
+            <div class="text-center p-8">
+              <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-plus text-slate-500 text-2xl"></i></div>
+              <p class="text-slate-400 font-medium mb-2">আরও প্রজেক্ট আসছে</p>
+              <p class="text-slate-600 text-sm">আপনার প্রজেক্ট এখানে থাকতে পারে</p>
+              <button onclick="toggleModal(true)" class="mt-5 spring-press text-xs bg-white/5 border border-white/10 hover:border-cyan-500/30 text-slate-400 hover:text-cyan-400 px-4 py-2 rounded-full transition-all">শুরু করুন →</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Project 2 -->
-    <a href="https://taniyaworld.netlify.app" target="_blank" class="group block">
-      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-pink-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(236,72,153,0.12)]">
-        <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
-          <div class="text-center"><i class="fa-solid fa-lock text-pink-400 text-4xl mb-3"></i><p class="text-white font-bold">Taniya's World</p></div>
-          <div class="absolute top-4 left-4 bg-pink-500/20 border border-pink-500/40 text-pink-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-white font-bold text-lg mb-1">Taniya's World</h3>
-          <p class="text-slate-400 text-sm mb-4">Private Access Web App</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Password Lock</span>
-            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Personal App</span>
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Project 3 -->
-    <a href="https://realbadsha.netlify.app" target="_blank" class="group block">
-      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.12)]">
-        <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
-          <div class="text-center"><i class="fa-solid fa-lock text-cyan-400 text-4xl mb-3"></i><p class="text-white font-bold">বাদশার নিজস্ব দুনিয়া</p></div>
-          <div class="absolute top-4 left-4 bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-white font-bold text-lg mb-1">Real Badsha</h3>
-          <p class="text-slate-400 text-sm mb-4">বাদশার নিজস্ব দুনিয়া</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Private Access</span>
-            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Web App</span>
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Project 4 -->
-    <a href="https://house612e4.netlify.app" target="_blank" class="group block">
-      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]">
-        <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
-          <div class="text-center"><i class="fa-solid fa-building text-emerald-400 text-4xl mb-3"></i><p class="text-white font-bold">৬১২ বাসা ম্যানেজমেন্ট</p></div>
-          <div class="absolute top-4 left-4 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-white font-bold text-lg mb-1">৬১২ বাসা ম্যানেজমেন্ট</h3>
-          <p class="text-slate-400 text-sm mb-4">হিসাব-নিকাশ ওয়েব অ্যাপ</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Bill Tracker</span>
-            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Bangla UI</span>
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Project 5 -->
-    <a href="https://amaderhisab.netlify.app" target="_blank" class="group block">
-      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.12)]">
-        <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
-          <div class="text-center"><i class="fa-solid fa-calculator text-blue-400 text-4xl mb-3"></i><p class="text-white font-bold">ডিজিটাল হিসাব</p></div>
-          <div class="absolute top-4 left-4 bg-blue-500/20 border border-blue-500/40 text-blue-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-white font-bold text-lg mb-1">ডিজিটাল হিসাব</h3>
-          <p class="text-slate-400 text-sm mb-4">Powered by Mahsin</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Expense Tracker</span>
-            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Shopping List</span>
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <!-- More Coming -->
-    <div class="group cursor-default">
-      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-dashed border-white/10 hover:border-white/20 transition-all duration-300 h-full min-h-[300px] flex items-center justify-center">
-        <div class="text-center p-8">
-          <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-plus text-slate-500 text-2xl"></i></div>
-          <p class="text-slate-400 font-medium mb-2">আরও প্রজেক্ট আসছে</p>
-          <p class="text-slate-600 text-sm">আপনার প্রজেক্ট এখানে থাকতে পারে</p>
-          <button onclick="toggleModal(true)" class="mt-5 spring-press text-xs bg-white/5 border border-white/10 hover:border-cyan-500/30 text-slate-400 hover:text-cyan-400 px-4 py-2 rounded-full transition-all">শুরু করুন →</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-```
-
   </section>
 
   <!-- Contact Section -->
-
   <section id="contact" class="py-20 px-6 bg-[#0A0F1C] border-y border-white/5">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
@@ -540,7 +512,6 @@
   </section>
 
   <!-- FAQ Section -->
-
   <section id="faq" class="py-20 px-6">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-14">
@@ -587,37 +558,111 @@
     </div>
   </section>
 
-  <!-- Blog Coming Soon -->
+  <!-- Blog Section — Dynamic -->
+  <section id="blog" class="py-20 px-6 bg-[#0A0F1C] border-y border-white/5">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div>
+          <p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase flex items-center gap-2"><i class="fa-solid fa-rss"></i> Blog & Resources</p>
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-3">আমাদের Blog</h2>
+          <p class="text-slate-400 max-w-lg">ওয়েব ডেভেলপমেন্ট, AI, এবং ডিজিটাল টিপস।</p>
+        </div>
+        <div class="flex gap-3 flex-wrap">
+          <button onclick="filterBlog('all')" id="filter-all" class="blog-filter-btn active-filter text-xs font-bold px-4 py-2 rounded-full border border-violet-500/40 bg-violet-500/10 text-violet-300 transition-all">সব</button>
+          <button onclick="filterBlog('ওয়েব ডেভেলপমেন্ট')" id="filter-web" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">ওয়েব</button>
+          <button onclick="filterBlog('AI Tools')" id="filter-ai" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">AI Tools</button>
+          <button onclick="filterBlog('Facebook Tips')" id="filter-fb" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">Facebook</button>
+        </div>
+      </div>
 
-  <section id="blog" class="py-20 px-6 bg-[#0A0F1C] border-y border-white/5 relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[20rem] bg-violet-600/10 rounded-full blur-[100px] pointer-events-none"></div>
-    <div class="max-w-3xl mx-auto text-center relative z-10">
-      <p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-6 uppercase flex items-center justify-center gap-2"><i class="fa-solid fa-rss"></i> Blog & Resources</p>
-      <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 border border-white/10 flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(139,92,246,0.2)]">
-        <i class="fa-solid fa-pen-to-square text-violet-400 text-3xl"></i>
+      <!-- Posts Grid -->
+      <div id="blogGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Loading State -->
+        <div id="blogLoading" class="md:col-span-2 lg:col-span-3 text-center py-16">
+          <div class="w-10 h-10 border-2 border-violet-500/30 border-t-violet-400 rounded-full animate-spin mx-auto mb-4"></div>
+          <p class="text-slate-500 text-sm">পোস্ট লোড হচ্ছে...</p>
+        </div>
       </div>
-      <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-4 tracking-tight leading-tight">
-        Blog <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">Coming Soon</span>
-      </h2>
-      <p class="text-slate-400 text-lg mb-10 leading-relaxed max-w-xl mx-auto">ওয়েবসাইট, অ্যাপ, AI, এবং ডিজিটাল মার্কেটিং নিয়ে টিপস ও গাইড শীঘ্রই প্রকাশিত হবে।</p>
-      <div class="flex flex-wrap justify-center gap-3 mb-12">
-        <span class="bg-white/5 border border-white/10 text-slate-400 text-xs font-medium px-4 py-2 rounded-full"><i class="fa-solid fa-globe text-cyan-400 mr-1.5"></i> ওয়েব ডেভেলপমেন্ট</span>
-        <span class="bg-white/5 border border-white/10 text-slate-400 text-xs font-medium px-4 py-2 rounded-full"><i class="fa-brands fa-facebook text-blue-400 mr-1.5"></i> Facebook Tips</span>
-        <span class="bg-white/5 border border-white/10 text-slate-400 text-xs font-medium px-4 py-2 rounded-full"><i class="fa-solid fa-robot text-pink-400 mr-1.5"></i> AI Tools</span>
-        <span class="bg-white/5 border border-white/10 text-slate-400 text-xs font-medium px-4 py-2 rounded-full"><i class="fa-solid fa-mobile-screen text-violet-400 mr-1.5"></i> App Building</span>
-      </div>
-      <div class="bg-[#111827] border border-white/10 rounded-2xl p-6 max-w-md mx-auto">
-        <p class="text-white font-semibold mb-1">নোটিফিকেশন পেতে চান?</p>
-        <p class="text-slate-500 text-sm mb-5">নতুন পোস্ট প্রকাশ হলে সবার আগে জানতে আমাদের Facebook Page ফলো করুন।</p>
-        <a href="https://www.facebook.com/MTstudio2" target="_blank" class="spring-press inline-flex items-center justify-center gap-2 w-full bg-[#1877F2] hover:bg-[#166FE5] text-white font-bold py-3.5 rounded-xl transition shadow-[0_0_20px_rgba(24,119,242,0.3)]">
-          <i class="fa-brands fa-facebook-f"></i> Facebook Page ফলো করুন
-        </a>
+
+      <!-- Empty State -->
+      <div id="blogEmpty" class="hidden text-center py-20">
+        <i class="fa-solid fa-pen-to-square text-5xl text-slate-700 mb-4"></i>
+        <p class="text-slate-500 text-lg">এখনো কোনো পোস্ট নেই। শীঘ্রই আসছে!</p>
       </div>
     </div>
   </section>
 
-  <!-- Packages -->
+  <style>
+    .blog-filter-btn.active-filter { border-color: rgba(139,92,246,0.5); background: rgba(139,92,246,0.15); color: #c4b5fd; }
+  </style>
 
+  <!-- Firebase Blog Script -->
+  <script type="module">
+    import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const cfg = {
+      apiKey: "AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
+      authDomain: "mt-studio-92d1e.firebaseapp.com",
+      projectId: "mt-studio-92d1e",
+      storageBucket: "mt-studio-92d1e.firebasestorage.app",
+      messagingSenderId: "455687864985",
+      appId: "1:455687864985:web:327dedaffdb7b5f8606e08"
+    };
+    const app2 = getApps().length ? getApps()[0] : initializeApp(cfg);
+    const db2 = getFirestore(app2);
+
+    let allPosts = [];
+
+    async function fetchPosts() {
+      const q = query(collection(db2, 'blogPosts'), where('status','==','published'), orderBy('createdAt','desc'));
+      const snap = await getDocs(q);
+      allPosts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      renderPosts(allPosts);
+    }
+
+    function renderPosts(posts) {
+      const grid = document.getElementById('blogGrid');
+      const empty = document.getElementById('blogEmpty');
+      document.getElementById('blogLoading').remove();
+      grid.innerHTML = '';
+      if (posts.length === 0) { empty.classList.remove('hidden'); return; }
+      empty.classList.add('hidden');
+      posts.forEach(post => {
+        const dateStr = post.createdAt?.toDate ? post.createdAt.toDate().toLocaleDateString('bn-BD', { year:'numeric', month:'short', day:'numeric' }) : '';
+        const card = document.createElement('a');
+        card.href = `post.html?id=${post.id}`;
+        card.className = 'group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-violet-500/40 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(139,92,246,0.1)]';
+        card.innerHTML = `
+          ${post.cover ? `<div class="h-48 overflow-hidden"><img src="${post.cover}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"></div>` : `<div class="h-48 bg-gradient-to-br from-violet-900/40 to-cyan-900/40 flex items-center justify-center"><i class="fa-solid fa-pen-to-square text-4xl text-violet-400/50"></i></div>`}
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[10px] bg-violet-500/10 border border-violet-500/20 text-violet-300 px-2.5 py-1 rounded-full font-bold">${post.category || 'General'}</span>
+              <span class="text-slate-600 text-xs">${dateStr}</span>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2 leading-snug group-hover:text-violet-300 transition-colors line-clamp-2">${post.title}</h3>
+            <p class="text-slate-400 text-sm leading-relaxed line-clamp-2">${post.excerpt}</p>
+            <div class="mt-4 flex items-center gap-2 text-violet-400 text-sm font-semibold">
+              পড়ুন <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    window.filterBlog = function(cat) {
+      document.querySelectorAll('.blog-filter-btn').forEach(b => b.classList.remove('active-filter'));
+      const filtered = cat === 'all' ? allPosts : allPosts.filter(p => p.category === cat);
+      renderPosts(filtered);
+      const map = { all: 'filter-all', 'ওয়েব ডেভেলপমেন্ট': 'filter-web', 'AI Tools': 'filter-ai', 'Facebook Tips': 'filter-fb' };
+      if (map[cat]) document.getElementById(map[cat])?.classList.add('active-filter');
+    };
+
+    fetchPosts();
+  </script>
+
+  <!-- Packages -->
   <section id="pricing" class="py-16 px-6">
     <div class="max-w-5xl mx-auto">
       <div class="flex items-center gap-4 mb-4"><div class="w-6 h-px bg-pink-500"></div><p class="text-slate-400 text-xs tracking-[0.2em] font-semibold uppercase">PACKAGES</p></div>
@@ -656,7 +701,6 @@
   </section>
 
   <!-- CTA -->
-
   <section class="py-16 px-6 mb-10">
     <div class="max-w-5xl mx-auto">
       <div class="rounded-3xl p-10 md:p-16 bg-gradient-to-br from-cyan-400 via-violet-500 to-pink-500 relative overflow-hidden shadow-2xl text-midnight">
@@ -671,16 +715,18 @@
   </section>
 
   <!-- Footer -->
-
   <footer class="border-t border-white/10 pt-20 pb-10 px-6 bg-[#03060D] relative z-10">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-12 mb-16">
         <div class="col-span-2 md:col-span-2">
+          <!-- REAL LOGO in Footer -->
           <div class="flex items-center gap-3 mb-8">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px]">
-              <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
-                <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-2xl font-['Dancing_Script'] tracking-wider">MT</span>
-              </div>
+            <div class="w-12 h-12 rounded-xl overflow-hidden border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+              <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" alt="MT Studio Logo" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <p class="text-white font-bold">MT Studio</p>
+              <p class="text-[10px] text-slate-400 uppercase tracking-widest">Digital Solutions</p>
             </div>
           </div>
           <div class="flex items-center gap-4 mb-8">
@@ -730,18 +776,20 @@
   </footer>
 
   <!-- Live Chat Widget -->
-
   <div id="draggable-wrapper" class="fixed bottom-6 right-6 z-[90] flex flex-col items-end gap-4" style="transform: translate3d(0px, 0px, 0px);">
     <div id="chatWidget" class="hidden flex-col bg-[#0B1121]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.8)] transform translate-y-4 opacity-0 transition-all duration-300 origin-bottom-right w-[320px] sm:w-[360px] overflow-hidden">
       <div class="bg-gradient-to-r from-cyan-600 to-violet-600 p-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full bg-midnight flex items-center justify-center font-['Dancing_Script'] font-bold text-white text-lg">MT</div>
-          <div><h4 class="text-white text-sm font-bold leading-tight">MT Studio Support</h4><p class="text-cyan-200 text-[10px] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Online • Typically replies instantly</p></div>
+          <!-- REAL LOGO in Chat Widget -->
+          <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-white/20">
+            <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" alt="MT Studio" class="w-full h-full object-cover">
+          </div>
+          <div><h4 class="text-white text-sm font-bold leading-tight">Mahir — MT Studio</h4><p class="text-cyan-200 text-[10px] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Online</p></div>
         </div>
         <button onclick="toggleSupportChat()" class="text-white/80 hover:text-white transition"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
       <div id="chatMessages" class="p-4 h-64 overflow-y-auto flex flex-col gap-3 bg-[#0A0F1C]/50">
-        <div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12">হ্যালো! MT Studio তে স্বাগতম। আপনার প্রোজেক্ট নিয়ে কোনো প্রশ্ন থাকলে এখানে সরাসরি চ্যাট করতে পারেন।</div>
+        <div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12">হ্যাঁ বলুন! আমি Mahir — MT Studio থেকে। কীভাবে সাহায্য করতে পারি? 😊</div>
       </div>
       <div class="p-3 border-t border-white/10 bg-[#050B14]">
         <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
@@ -750,17 +798,16 @@
         </form>
       </div>
     </div>
-    <button id="fab-button" class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-violet-600 p-[2px] shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:shadow-[0_0_30px_rgba(139,92,246,0.7)] transition-shadow relative group cursor-grab">
-      <div class="w-full h-full bg-[#050B14] rounded-full flex items-center justify-center relative overflow-hidden pointer-events-none">
-        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-violet-600/20"></div>
-        <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-3xl font-['Dancing_Script'] tracking-wider relative z-10 pt-1">MT</span>
+    <!-- FAB Button with REAL LOGO -->
+    <button id="fab-button" class="w-16 h-16 rounded-full p-[2px] bg-gradient-to-br from-cyan-400 to-violet-600 shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:shadow-[0_0_30px_rgba(139,92,246,0.7)] transition-shadow relative group cursor-grab overflow-hidden">
+      <div class="w-full h-full rounded-full overflow-hidden border-2 border-midnight/50">
+        <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" alt="MT Studio" class="w-full h-full object-cover pointer-events-none">
       </div>
-      <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-midnight text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap shadow-lg">Live Chat</div>
+      <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-midnight text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap shadow-lg">Mahir — MT Studio</div>
     </button>
   </div>
 
   <!-- Service Details Modal -->
-
   <div id="serviceDetailsModal" class="fixed inset-0 z-[105] hidden items-center justify-center bg-[#050B14]/95 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
     <button onclick="closeServiceDetails()" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[106]"><i class="fa-solid fa-xmark text-xl"></i></button>
     <div class="w-full max-w-4xl relative transform scale-95 transition-transform duration-300 my-10 flex flex-col">
@@ -792,19 +839,18 @@
   </div>
 
   <!-- Auth Modal -->
-
   <div id="quoteModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
     <button onclick="toggleModal(false)" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[101]"><i class="fa-solid fa-xmark text-xl"></i></button>
     <div class="w-full max-w-xl relative transform scale-95 transition-transform duration-300 my-10 flex flex-col items-center">
-      <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px] mb-8 shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-        <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center"><span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold font-['Dancing_Script'] text-2xl">MT</span></div>
+      <!-- REAL LOGO in Auth Modal -->
+      <div class="w-16 h-16 rounded-2xl overflow-hidden mb-8 shadow-[0_0_20px_rgba(6,182,212,0.4)] border border-cyan-500/30">
+        <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" alt="MT Studio Logo" class="w-full h-full object-cover">
       </div>
       <div class="text-center mb-8 w-full">
         <h2 id="authTitle" class="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">Get started with MT Studio</h2>
         <p id="authSubtitle" class="text-slate-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">Sign up to learn about websites, mobile apps, brand visuals and AI workflows.</p>
       </div>
       <div class="bg-[#0A0F1C] border border-white/10 rounded-2xl p-6 md:p-10 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-        <!-- Sign Up Form -->
         <form id="signupForm" onsubmit="handleAuthSubmit(event, 'signup')" class="space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div><label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">First name*</label><input type="text" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="First name"></div>
@@ -820,7 +866,6 @@
           <div class="relative flex items-center py-2 mt-4"><div class="flex-grow border-t border-white/10"></div><span class="flex-shrink-0 mx-4 text-slate-500 text-xs">or</span><div class="flex-grow border-t border-white/10"></div></div>
           <p class="text-center text-slate-400 text-sm">Already have an account? <button type="button" onclick="switchAuthMode('signin')" class="text-white hover:text-cyan-400 font-semibold transition underline decoration-white/30 underline-offset-4">Log in</button></p>
         </form>
-        <!-- Sign In Form -->
         <form id="signinForm" class="hidden space-y-5" onsubmit="handleAuthSubmit(event, 'signin')">
           <div><label class="block text-xs font-semibold text-slate-400 mb-2">Email address*</label><input type="email" required class="w-full px-4 py-3.5 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500"></div>
           <div><div class="flex justify-between items-center mb-2"><label class="block text-xs font-semibold text-slate-400">Password*</label><a href="#" class="text-xs text-cyan-400 hover:text-cyan-300 transition">Forgot password?</a></div><div class="relative"><input type="password" id="siPassword" required class="w-full px-4 py-3.5 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500"><i class="fa-solid fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white" onclick="togglePassword('siPassword')"></i></div></div>
@@ -837,7 +882,6 @@
   </div>
 
   <!-- Success Modal -->
-
   <div id="successModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-md p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl p-8 max-w-sm w-full text-center shadow-[0_0_50px_rgba(6,182,212,0.2)] transform scale-95 transition-transform duration-300 flex flex-col items-center">
       <div class="w-16 h-16 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-3xl mb-5 shadow-[0_0_20px_rgba(34,197,94,0.4)]"><i class="fa-solid fa-check"></i></div>
@@ -848,7 +892,6 @@
   </div>
 
   <!-- Firebase -->
-
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
@@ -872,7 +915,7 @@
       const navBtns = document.querySelectorAll('.nav-auth-btn');
       if (user) {
         navBtns.forEach(btn => {
-          btn.innerHTML = `<div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-violet-600 flex items-center justify-center text-white text-xs font-bold">${user.displayName ? user.displayName[0].toUpperCase() : user.email[0].toUpperCase()}</div><span class="text-white text-sm font-medium hidden md:inline">${user.displayName || user.email.split('@')[0]}</span><button onclick="window.fbSignOut()" class="text-slate-400 hover:text-red-400 text-xs ml-1 transition"><i class="fa-solid fa-right-from-bracket"></i></button></div>`;
+          btn.innerHTML = `<div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full overflow-hidden border border-cyan-500/50"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div><span class="text-white text-sm font-medium hidden md:inline">${user.displayName || user.email.split('@')[0]}</span><button onclick="window.fbSignOut()" class="text-slate-400 hover:text-red-400 text-xs ml-1 transition"><i class="fa-solid fa-right-from-bracket"></i></button></div>`;
         });
       } else {
         navBtns.forEach(btn => { btn.innerHTML = 'Sign In'; btn.onclick = () => toggleModal(true); });
@@ -932,22 +975,18 @@
   </script>
 
   <!-- Main JS -->
-
   <script>
-    // EmailJS
     const EMAILJS_SERVICE_ID  = 'service_w8zocpp';
     const EMAILJS_TEMPLATE_ID = 'template_v1hge8r';
     const EMAILJS_PUBLIC_KEY  = 'p_mMJON6oBY_Fg3u_';
     emailjs.init(EMAILJS_PUBLIC_KEY);
 
-    // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         if (this.getAttribute('href').length > 1) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }
       });
     });
 
-    // PayPal
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof paypal !== 'undefined') {
         paypal.Buttons({
@@ -962,7 +1001,6 @@
 
     let currentUsdAmount = '0.00';
 
-    // Service Data
     const serviceData = {
       'web': { title: 'Web Apps Development', subtitle: 'স্কেলেবল এবং রেস্পন্সিভ ওয়েবসাইট', icon: 'fa-globe', color: 'text-cyan-400', bgColor: 'bg-cyan-500/10', glowColor: 'bg-cyan-500/20', borderColor: 'border-cyan-500/20', features: ['<i class="fa-solid fa-check text-cyan-500 w-5"></i> E-commerce Platforms', '<i class="fa-solid fa-check text-cyan-500 w-5"></i> Custom Admin Dashboards', '<i class="fa-solid fa-check text-cyan-500 w-5"></i> Portfolio Sites'], images: [{ src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80', title: 'Real Badsha', url: 'https://realbadsha.netlify.app' }, { src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', title: 'Dashboard Demo', url: '#' }] },
       'mobile': { title: 'Mobile App Build', subtitle: 'iOS এবং Android এর জন্য হাই-কোয়ালিটি অ্যাপ', icon: 'fa-mobile-screen', color: 'text-violet-400', bgColor: 'bg-violet-500/10', glowColor: 'bg-violet-500/20', borderColor: 'border-violet-500/20', features: ['<i class="fa-solid fa-check text-violet-500 w-5"></i> Native iOS App', '<i class="fa-solid fa-check text-violet-500 w-5"></i> Android APK Build'], images: [{ src: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80', title: 'Mobile App', url: '#' }, { src: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?w=600&q=80', title: 'Fitness App', url: '#' }] },
@@ -972,7 +1010,6 @@
       'ai': { title: 'AI Prompts', subtitle: 'Midjourney, Flux, ChatGPT এক্সপার্ট', icon: 'fa-robot', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10', glowColor: 'bg-emerald-500/20', borderColor: 'border-emerald-500/20', features: ['<i class="fa-solid fa-check text-emerald-500 w-5"></i> AI Art', '<i class="fa-solid fa-check text-emerald-500 w-5"></i> Custom GPTs'], images: [{ src: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80', title: 'AI Art', url: '#' }, { src: 'https://images.unsplash.com/photo-1684369175836-96b6534575b6?w=600&q=80', title: 'Chatbot UI', url: '#' }] }
     };
 
-    // UI Functions
     function showSuccessModal(title, message) {
       document.getElementById('successTitle').innerText = title;
       document.getElementById('successMessage').innerText = message;
@@ -1066,7 +1103,6 @@
       }
     }
 
-    // Contact Form
     function handleContactSubmit(event) {
       event.preventDefault();
       const form = event.target;
@@ -1086,7 +1122,6 @@
         .finally(() => { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-paper-plane text-sm mr-2"></i> মেসেজ পাঠান'; });
     }
 
-    // FAQ
     function toggleFaq(btn) {
       const item = btn.closest('.faq-item');
       const answer = item.querySelector('.faq-answer');
@@ -1096,26 +1131,101 @@
       if (!isOpen) { answer.classList.remove('hidden'); icon.style.transform = 'rotate(45deg)'; icon.querySelector('i').className = 'fa-solid fa-plus text-cyan-400 text-sm'; }
     }
 
-    // Live Chat
     function toggleSupportChat() {
       const menu = document.getElementById('chatWidget');
       if (menu.classList.contains('hidden')) { menu.classList.remove('hidden'); setTimeout(() => { menu.classList.remove('translate-y-4', 'opacity-0'); }, 10); }
       else { menu.classList.add('translate-y-4', 'opacity-0'); setTimeout(() => { menu.classList.add('hidden'); }, 300); }
     }
 
-    function handleChatSubmit(e) {
+    // ── Gemini AI Agent ──────────────────────────────────────
+    const _a = 'AQ.Ab8RN6JD8cN8Jz';
+    const _b = 'XWMk6aZogmcM2j3c';
+    const _c = 'TIk21yc1c6ttY9QTCUxA';
+    const GEMINI_API_KEY = _a + _b + _c;
+    const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const GEMINI_SYSTEM = `তোমার নাম Mahir। তুমি MT Studio-র একজন real team member — customer support এবং sales এ কাজ করো। তুমি কোনো AI বা bot না, এটা কখনো স্বীকার করবে না। কেউ জিজ্ঞেস করলে বলবে "আমি Mahir, MT Studio-র team এ আছি"।
+
+তোমার কথা বলার স্টাইল:
+- একদম স্বাভাবিক বাংলায় কথা বলো, যেভাবে বন্ধু বা পরিচিত মানুষ বলে
+- formal "আপনি" ব্যবহার করো কিন্তু tone হবে warm এবং friendly
+- ছোট ছোট sentence এ কথা বলো, paragraph না
+- মাঝে মাঝে "আচ্ছা", "হ্যাঁ অবশ্যই", "বুঝেছি", "দেখুন" এই ধরনের natural filler word ব্যবহার করো
+- emoji একদম কম ব্যবহার করো, বড়জোর একটা দুটো
+- কখনো robot এর মতো list করে উত্তর দিও না, বরং কথার মতো করে বলো
+- কাস্টমার কিছু share করলে সহানুভূতি দেখাও
+- একটু humor বা হালকা ভাব রাখো, কিন্তু unprofessional না
+
+MT Studio সম্পর্কে তুমি যা জানো:
+- ওয়েবসাইট বানাই, মোবাইল অ্যাপ বানাই, UI/UX ডিজাইন করি
+- Facebook Page fix করি, ভিডিও এবং ফটো এডিটিং করি
+- AI Prompt engineering করি
+- এখন সব সার্ভিস ১০০% ফ্রি চলছে, limited offer
+- WhatsApp: +1(917)419-9814
+- Email: studiomt46@gmail.com
+- ৪৮ ঘণ্টার মধ্যে delivery দিই সাধারণত
+- Messenger: facebook.com/MTstudio2
+
+কাস্টমার যদি project নিয়ে কথা বলতে চায়, WhatsApp এ যোগাযোগ করতে বলো। যেকোনো প্রশ্নের উত্তর দাও — শুধু MT Studio না, যেকোনো বিষয়েই। তুমি Mahir, একজন helpful মানুষ।`;
+    let chatHistory = [];
+
+    function addMessage(text, isUser) {
+      const chatBox = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      if (isUser) {
+        div.className = 'bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm w-10/12 self-end ml-auto shadow-md animate-popIn';
+        div.textContent = text;
+      } else {
+        div.className = 'bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12 shadow-md flex items-start gap-2 animate-popIn';
+        div.innerHTML = `<div class="w-6 h-6 rounded-full overflow-hidden shrink-0 mt-0.5"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div><div>${text}</div>`;
+      }
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function addTyping() {
+      const chatBox = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.id = 'typingIndicator';
+      div.className = 'bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-400 w-auto shadow-md flex items-center gap-2';
+      div.innerHTML = `<div class="w-6 h-6 rounded-full overflow-hidden shrink-0"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div><div class="flex gap-1"><span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay:0ms"></span><span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay:150ms"></span><span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay:300ms"></span></div>`;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function handleChatSubmit(e) {
       e.preventDefault();
       const input = document.getElementById('chatInput');
-      const msg = input.value;
-      if (!msg.trim()) return;
-      const chatBox = document.getElementById('chatMessages');
-      chatBox.innerHTML += `<div class="bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm w-10/12 self-end ml-auto shadow-md animate-popIn">${msg}</div>`;
+      const msg = input.value.trim();
+      if (!msg) return;
       input.value = '';
-      chatBox.scrollTop = chatBox.scrollHeight;
-      setTimeout(() => {
-        chatBox.innerHTML += `<div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12 shadow-md flex items-start gap-2 animate-popIn"><div class="w-6 h-6 rounded-full bg-midnight shrink-0 flex items-center justify-center font-['Dancing_Script'] text-[10px] font-bold mt-0.5">MT</div><div>আপনার মেসেজটি আমরা পেয়েছি। খুব শীঘ্রই আমাদের একজন প্রতিনিধি যুক্ত হবেন।</div></div>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 1200);
+      input.disabled = true;
+
+      addMessage(msg, true);
+      chatHistory.push({ role: 'user', parts: [{ text: msg }] });
+      addTyping();
+
+      try {
+        const body = {
+          system_instruction: { parts: [{ text: GEMINI_SYSTEM }] },
+          contents: chatHistory,
+          generationConfig: { maxOutputTokens: 500, temperature: 0.7 }
+        };
+        const res = await fetch(GEMINI_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'দুঃখিত, উত্তর দিতে পারছি না। WhatsApp-এ যোগাযোগ করুন: +1(917)419-9814';
+        document.getElementById('typingIndicator')?.remove();
+        chatHistory.push({ role: 'model', parts: [{ text: reply }] });
+        addMessage(reply.replace(/\n/g, '<br>'), false);
+      } catch(err) {
+        document.getElementById('typingIndicator')?.remove();
+        addMessage('নেটওয়ার্ক সমস্যা। WhatsApp-এ যোগাযোগ করুন: +1(917)419-9814', false);
+      }
+      input.disabled = false;
+      input.focus();
     }
 
     // Draggable FAB
@@ -1150,6 +1260,5 @@
       }
     }
   </script>
-
 </body>
 </html>

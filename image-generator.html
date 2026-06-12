@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Image Generator — MT Studio</title>
+  <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { background:#050B14; color:#e2e8f0; padding-bottom:80px; }
+    .bottom-nav { position:fixed; bottom:0; left:0; right:0; z-index:50; background:rgba(5,11,20,0.96); backdrop-filter:blur(20px); border-top:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-around; padding:6px 0 14px; }
+    .bnav-item { display:flex; flex-direction:column; align-items:center; gap:3px; color:#475569; font-size:10px; font-weight:600; cursor:pointer; text-decoration:none; }
+    .bnav-item.active { color:#22d3ee; }
+    .bnav-item i { font-size:19px; }
+  </style>
+</head>
+<body class="bg-slate-950">
+
+<!-- TOP NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur-xl border-b border-white/5 px-4 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="text-slate-400 hover:text-white p-1">
+      <i class="fa-solid fa-arrow-left text-lg"></i>
+    </a>
+    <div>
+      <h1 class="text-sm font-extrabold text-white">Image Generator</h1>
+      <p class="text-[9px] text-slate-500">MT Studio AI</p>
+    </div>
+  </div>
+  <div id="creditsDisplay" class="text-xs font-bold text-cyan-300">লোড...</div>
+</nav>
+
+<!-- MAIN -->
+<main class="pt-16 px-4">
+
+  <div class="pt-4 pb-4">
+    <p class="text-xs text-cyan-400 font-bold uppercase mb-1">✦ AI দিয়ে ছবি তৈরি করো</p>
+    <h2 class="text-2xl font-extrabold text-white">কল্পনাকে<br><span class="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">ছবিতে রূপ দাও</span></h2>
+    <p class="text-xs text-slate-500 mt-1.5">প্রতি ছবি = 5 credits</p>
+  </div>
+
+  <!-- PROMPT INPUT -->
+  <div class="mb-4">
+    <textarea id="promptInput" class="w-full bg-slate-900 border border-slate-700 text-white p-3 rounded-lg text-sm focus:border-cyan-500 outline-none" rows="3" placeholder="বাংলায় বা English-এ লেখো..." maxlength="1000"></textarea>
+    <div class="text-right text-xs text-slate-600 mt-1"><span id="charCount">0</span>/1000</div>
+  </div>
+
+  <!-- STYLE -->
+  <div class="mb-3">
+    <p class="text-xs font-bold text-slate-500 uppercase mb-2">Style</p>
+    <div class="flex gap-2 overflow-x-auto pb-2">
+      <button class="style-btn active" onclick="selectStyle(this,'vivid')">✨ Vivid</button>
+      <button class="style-btn" onclick="selectStyle(this,'natural')">🌿 Natural</button>
+      <button class="style-btn" onclick="selectStyle(this,'cinematic')">🎬 Cinematic</button>
+      <button class="style-btn" onclick="selectStyle(this,'anime')">🎌 Anime</button>
+    </div>
+  </div>
+
+  <!-- SIZE -->
+  <div class="mb-4">
+    <p class="text-xs font-bold text-slate-500 uppercase mb-2">Size</p>
+    <div class="grid grid-cols-3 gap-2">
+      <button class="size-btn active" onclick="selectSize(this,'1024x1024')"><div class="w-8 h-8 bg-slate-700 rounded mb-1"></div><span class="text-[10px]">1:1</span></button>
+      <button class="size-btn" onclick="selectSize(this,'1792x1024')"><div class="w-10 h-6 bg-slate-700 rounded mb-1"></div><span class="text-[10px]">16:9</span></button>
+      <button class="size-btn" onclick="selectSize(this,'1024x1792')"><div class="w-6 h-10 bg-slate-700 rounded mb-1"></div><span class="text-[10px]">9:16</span></button>
+    </div>
+  </div>
+
+  <!-- GENERATE BUTTON -->
+  <button id="genBtn" class="w-full bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-bold py-3 rounded-lg mb-5 flex items-center justify-center gap-2" onclick="generateImage()">
+    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Image
+  </button>
+
+  <!-- RESULT -->
+  <div id="resultArea" class="hidden mb-6">
+    <div id="loadingSkeleton" class="bg-slate-900 rounded-xl h-80 animate-pulse mb-3"></div>
+    <div id="imageCard" class="hidden bg-slate-900 rounded-xl overflow-hidden">
+      <img id="generatedImg" src="" alt="Generated" class="w-full block">
+      <div class="p-4 flex gap-2">
+        <a id="downloadBtn" href="#" download="mt-studio.png" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white py-2 rounded text-sm font-bold text-center flex items-center justify-center gap-1">
+          <i class="fa-solid fa-download"></i> Download
+        </a>
+        <button class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white py-2 rounded text-sm font-bold" onclick="shareImage()">
+          <i class="fa-solid fa-share"></i> Share
+        </button>
+      </div>
+    </div>
+    <div id="errorBox" class="hidden bg-red-500/10 border border-red-500/30 text-red-400 p-4 rounded-lg text-sm"></div>
+  </div>
+
+  <!-- HISTORY -->
+  <div>
+    <h3 class="text-sm font-bold text-white mb-3">আগের ছবি</h3>
+    <div id="historyGrid" class="grid grid-cols-3 gap-2 mb-4">
+      <div class="text-center py-8 col-span-3 text-slate-600 text-xs">এখনো কোনো ছবি তৈরি হয়নি</div>
+    </div>
+  </div>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bnav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="#" class="bnav-item"><i class="fa-solid fa-compass"></i><span>Inspire</span></a>
+  <a href="#" class="bnav-item active"><i class="fa-solid fa-image"></i><span>Image AI</span></a>
+  <a href="#" class="bnav-item"><i class="fa-solid fa-grid-2"></i><span>Tools</span></a>
+  <a href="index.html#contact" class="bnav-item"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
+</nav>
+
+<style>
+  .style-btn, .size-btn { background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.1); color:#94a3b8; padding:8px 12px; border-radius:8px; cursor:pointer; font-size:12px; font-weight:600; transition:all 0.2s; white-space:nowrap; }
+  .style-btn.active, .size-btn.active { background:rgba(34,211,238,0.15); border-color:rgba(34,211,238,0.4); color:#22d3ee; }
+  .style-btn:hover:not(.active), .size-btn:hover:not(.active) { border-color:rgba(255,255,255,0.2); }
+  .size-btn { flex-direction:column; align-items:center; }
+</style>
+
+<!-- FIREBASE & LOGIC -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, updateDoc, increment, collection, addDoc, query, where, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const app = initializeApp({
+    apiKey:"AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
+    authDomain:"mt-studio-92d1e.firebaseapp.com",
+    projectId:"mt-studio-92d1e",
+    storageBucket:"mt-studio-92d1e.firebasestorage.app",
+    messagingSenderId:"455687864985",
+    appId:"1:455687864985:web:327dedaffdb7b5f8606e08"
+  });
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const IMAGE_COST = 5;
+  const WORKER_URL = 'https://hidden-sky-3109.studiomt46.workers.dev';
+  let currentUser = null;
+  let userCredits = 0;
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      currentUser = user;
+      const ref = doc(db, 'users', user.uid);
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        userCredits = snap.data().credits || 0;
+      }
+      updateCreditsDisplay();
+      await loadHistory(user.uid);
+    } else {
+      document.getElementById('creditsDisplay').textContent = 'Login করো';
+      loadLocalHistory();
+    }
+  });
+
+  function updateCreditsDisplay() {
+    document.getElementById('creditsDisplay').textContent = userCredits + ' credits';
+  }
+
+  window.generateImage = async function() {
+    const prompt = document.getElementById('promptInput').value.trim();
+    if (!prompt) { alert('Prompt লেখো!'); return; }
+
+    if (!currentUser) {
+      if (confirm('Login করতে হবে। যাবে?')) window.location.href = 'index.html';
+      return;
+    }
+
+    if (userCredits < IMAGE_COST) {
+      alert(`Credits কম! দরকার ${IMAGE_COST}, আছে ${userCredits}`);
+      return;
+    }
+
+    document.getElementById('genBtn').disabled = true;
+    document.getElementById('resultArea').classList.remove('hidden');
+    document.getElementById('loadingSkeleton').classList.remove('hidden');
+    document.getElementById('imageCard').classList.add('hidden');
+    document.getElementById('errorBox').classList.add('hidden');
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'image',
+          prompt: prompt,
+          size: window.selectedSize || '1024x1024',
+          style: window.selectedStyle || 'vivid'
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.success && data.imageUrl) {
+        document.getElementById('generatedImg').src = data.imageUrl;
+        document.getElementById('downloadBtn').href = data.imageUrl;
+        document.getElementById('loadingSkeleton').classList.add('hidden');
+        document.getElementById('imageCard').classList.remove('hidden');
+
+        // Deduct credits
+        await updateDoc(doc(db, 'users', currentUser.uid), {
+          credits: increment(-IMAGE_COST)
+        });
+        userCredits -= IMAGE_COST;
+        updateCreditsDisplay();
+
+        // Save to history
+        await addDoc(collection(db, 'images'), {
+          userId: currentUser.uid,
+          prompt: prompt,
+          imageUrl: data.imageUrl,
+          createdAt: serverTimestamp()
+        });
+
+        addToLocalHistory({ imageUrl: data.imageUrl, prompt: prompt });
+        await loadHistory(currentUser.uid);
+      } else {
+        throw new Error(data.error || 'Failed');
+      }
+
+    } catch(err) {
+      document.getElementById('loadingSkeleton').classList.add('hidden');
+      document.getElementById('errorBox').classList.remove('hidden');
+      document.getElementById('errorBox').textContent = '❌ ' + (err.message || 'সমস্যা হয়েছে');
+    }
+
+    document.getElementById('genBtn').disabled = false;
+  };
+
+  async function loadHistory(uid) {
+    try {
+      const q = query(collection(db, 'images'), where('userId','==',uid), orderBy('createdAt','desc'));
+      const snap = await getDocs(q);
+      const items = [];
+      snap.forEach(d => items.push(d.data()));
+      renderHistory(items);
+    } catch(e) {
+      loadLocalHistory();
+    }
+  }
+
+  function renderHistory(items) {
+    const grid = document.getElementById('historyGrid');
+    if (!items.length) {
+      grid.innerHTML = '<div class="col-span-3 text-center py-8 text-slate-600 text-xs">এখনো কোনো ছবি তৈরি হয়নি</div>';
+      return;
+    }
+    grid.innerHTML = items.map(item => `
+      <div class="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition" onclick="document.getElementById('generatedImg').src='${item.imageUrl}'; document.getElementById('downloadBtn').href='${item.imageUrl}';">
+        <img src="${item.imageUrl}" alt="${item.prompt}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+      </div>
+    `).join('');
+  }
+
+  function loadLocalHistory() {
+    const saved = JSON.parse(localStorage.getItem('mt_images') || '[]');
+    renderHistory(saved);
+  }
+
+  function addToLocalHistory(item) {
+    const saved = JSON.parse(localStorage.getItem('mt_images') || '[]');
+    saved.unshift(item);
+    localStorage.setItem('mt_images', JSON.stringify(saved.slice(0, 30)));
+  }
+
+  // UI
+  document.getElementById('promptInput').addEventListener('input', function() {
+    document.getElementById('charCount').textContent = this.value.length;
+  });
+
+  window.selectStyle = function(btn, style) {
+    document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    window.selectedStyle = style;
+  };
+
+  window.selectSize = function(btn, size) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    window.selectedSize = size;
+  };
+
+  window.shareImage = async function() {
+    const url = document.getElementById('generatedImg').src;
+    if (navigator.share) {
+      try { await navigator.share({ title: 'MT Studio Image', url: url }); }
+      catch(e) {}
+    } else {
+      navigator.clipboard.writeText(url);
+      alert('URL copied!');
+    }
+  };
+</script>
+
+</body>
+</html>

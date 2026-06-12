@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Writer — MT Studio</title>
+  <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { background:#050B14; color:#e2e8f0; padding-bottom:80px; }
+    .bottom-nav { position:fixed; bottom:0; left:0; right:0; z-index:50; background:rgba(5,11,20,0.96); backdrop-filter:blur(20px); border-top:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-around; padding:6px 0 14px; }
+    .bnav-item { display:flex; flex-direction:column; align-items:center; gap:3px; color:#475569; font-size:10px; font-weight:600; text-decoration:none; }
+    .bnav-item.active { color:#22d3ee; }
+    .bnav-item i { font-size:19px; }
+    .type-card { background:#0A0F1C; border:1.5px solid rgba(255,255,255,0.07); border-radius:12px; padding:14px; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; gap:12px; }
+    .type-card.active { border-color:rgba(34,211,238,0.4); background:rgba(34,211,238,0.07); }
+    .type-card:hover:not(.active) { border-color:rgba(255,255,255,0.15); }
+    .type-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+    textarea.f-input { width:100%; background:#0A0F1C; border:1.5px solid rgba(255,255,255,0.07); color:white; padding:12px; border-radius:10px; font-size:13px; font-family:inherit; resize:none; outline:none; transition:border-color 0.2s; }
+    textarea.f-input:focus { border-color:rgba(34,211,238,0.3); }
+    textarea.f-input::placeholder { color:#334155; }
+    select.f-input { width:100%; background:#0A0F1C; border:1.5px solid rgba(255,255,255,0.07); color:white; padding:12px; border-radius:10px; font-size:13px; font-family:inherit; outline:none; }
+    .gen-btn { width:100%; background:linear-gradient(135deg,#0891b2,#7c3aed); border:none; color:white; padding:14px; border-radius:12px; font-size:14px; font-weight:700; font-family:inherit; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:all 0.2s; }
+    .gen-btn:hover:not(:disabled) { box-shadow:0 0 30px rgba(8,145,178,0.3); }
+    .gen-btn:disabled { opacity:0.5; cursor:not-allowed; }
+    .result-box { background:#0A0F1C; border:1.5px solid rgba(34,211,238,0.2); border-radius:12px; padding:16px; white-space:pre-wrap; font-size:13px; line-height:1.7; color:#cbd5e1; }
+    .copy-btn { background:rgba(34,211,238,0.1); border:1px solid rgba(34,211,238,0.25); color:#22d3ee; padding:8px 16px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit; transition:all 0.2s; display:flex; align-items:center; gap:6px; }
+    .copy-btn:hover { background:rgba(34,211,238,0.2); }
+    @keyframes spin { to{transform:rotate(360deg);} }
+  </style>
+</head>
+<body>
+
+<nav class="fixed top-0 left:0 right-0 left-0 z-50 bg-slate-950/90 backdrop-blur-xl border-b border-white/5 px-4 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-arrow-left text-lg"></i></a>
+    <div>
+      <h1 class="text-sm font-extrabold text-white">Content Writer</h1>
+      <p class="text-[9px] text-slate-500">MT Studio AI</p>
+    </div>
+  </div>
+  <div id="creditsDisplay" class="text-xs font-bold text-cyan-300">লোড...</div>
+</nav>
+
+<main class="pt-16 px-4">
+
+  <div class="pt-4 pb-4">
+    <p class="text-xs text-cyan-400 font-bold uppercase mb-1">✦ AI দিয়ে content লেখো</p>
+    <h2 class="text-2xl font-extrabold text-white">যেকোনো content<br><span class="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">সেকেন্ডে তৈরি</span></h2>
+    <p class="text-xs text-slate-500 mt-1.5">প্রতি content = 3 credits</p>
+  </div>
+
+  <!-- TYPE SELECTOR -->
+  <div class="mb-4">
+    <p class="text-xs font-bold text-slate-500 uppercase mb-2">Content Type</p>
+    <div class="grid grid-cols-2 gap-2">
+      <div class="type-card active" onclick="selectType(this,'blog')">
+        <div class="type-icon bg-cyan-500/15">📝</div>
+        <div>
+          <p class="text-sm font-bold text-white">Blog Post</p>
+          <p class="text-xs text-slate-500">Article লেখা</p>
+        </div>
+      </div>
+      <div class="type-card" onclick="selectType(this,'social')">
+        <div class="type-icon bg-violet-500/15">📱</div>
+        <div>
+          <p class="text-sm font-bold text-white">Social Post</p>
+          <p class="text-xs text-slate-500">Facebook / Insta</p>
+        </div>
+      </div>
+      <div class="type-card" onclick="selectType(this,'ad')">
+        <div class="type-icon bg-pink-500/15">📢</div>
+        <div>
+          <p class="text-sm font-bold text-white">Ad Copy</p>
+          <p class="text-xs text-slate-500">বিজ্ঞাপন লেখা</p>
+        </div>
+      </div>
+      <div class="type-card" onclick="selectType(this,'product')">
+        <div class="type-icon bg-green-500/15">🛍️</div>
+        <div>
+          <p class="text-sm font-bold text-white">Product Desc</p>
+          <p class="text-xs text-slate-500">পণ্যের বিবরণ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPIC INPUT -->
+  <div class="mb-3">
+    <p class="text-xs font-bold text-slate-500 uppercase mb-2">Topic / Keyword</p>
+    <textarea id="topicInput" class="f-input" rows="2" placeholder="যেমন: মোবাইল ফটোগ্রাফি টিপস, ব্যবসার মার্কেটিং, নতুন পণ্য লঞ্চ..."></textarea>
+  </div>
+
+  <!-- LANGUAGE -->
+  <div class="mb-3">
+    <p class="text-xs font-bold text-slate-500 uppercase mb-2">ভাষা</p>
+    <select id="langSelect" class="f-input">
+      <option value="bn">বাংলা</option>
+      <option value="en">English</option>
+      <option value="mixed">Banglish (মিশ্র)</option>
+    </select>
+  </div>
+
+  <!-- TONE -->
+  <div class="mb-4">
+    <p class="text-xs font-bold text-slate-500 uppercase mb-2">Tone</p>
+    <select id="toneSelect" class="f-input">
+      <option value="professional">Professional (আনুষ্ঠানিক)</option>
+      <option value="casual">Casual (সাধারণ)</option>
+      <option value="funny">Funny (মজাদার)</option>
+      <option value="emotional">Emotional (আবেগপ্রবণ)</option>
+      <option value="persuasive">Persuasive (বিক্রয়মুখী)</option>
+    </select>
+  </div>
+
+  <!-- GENERATE BUTTON -->
+  <button id="genBtn" class="gen-btn mb-5" onclick="generateContent()">
+    <i class="fa-solid fa-pen-nib"></i> Generate Content
+    <span class="text-xs opacity-70">(3 credits)</span>
+  </button>
+
+  <!-- RESULT -->
+  <div id="resultArea" class="hidden mb-6">
+    <div id="loadingBox" class="hidden text-center py-10">
+      <div style="width:30px;height:30px;border:3px solid rgba(255,255,255,0.1);border-top-color:#22d3ee;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 12px;"></div>
+      <p class="text-xs text-slate-500">লেখা তৈরি হচ্ছে...</p>
+    </div>
+    <div id="contentResult" class="hidden">
+      <div class="flex justify-between items-center mb-2">
+        <p class="text-xs font-bold text-slate-500 uppercase">Generated Content</p>
+        <button class="copy-btn" onclick="copyContent()">
+          <i class="fa-solid fa-copy"></i> Copy
+        </button>
+      </div>
+      <div id="resultText" class="result-box"></div>
+      <button class="gen-btn mt-3" onclick="generateContent()" style="background:linear-gradient(135deg,#1e293b,#334155);">
+        <i class="fa-solid fa-rotate-right"></i> আবার Generate করো
+      </button>
+    </div>
+    <div id="errorBox" class="hidden bg-red-500/10 border border-red-500/30 text-red-400 p-4 rounded-lg text-sm"></div>
+  </div>
+
+  <!-- HISTORY -->
+  <div id="historySection">
+    <h3 class="text-sm font-bold text-white mb-3">আগের Content</h3>
+    <div id="historyList" class="flex flex-col gap-2">
+      <div class="text-center py-6 text-slate-600 text-xs">এখনো কোনো content তৈরি হয়নি</div>
+    </div>
+  </div>
+
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bnav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="chat.html" class="bnav-item"><i class="fa-solid fa-message"></i><span>Chat</span></a>
+  <a href="image-generator.html" class="bnav-item"><i class="fa-solid fa-image"></i><span>Image</span></a>
+  <a href="#" class="bnav-item active"><i class="fa-solid fa-pen-nib"></i><span>Write</span></a>
+  <a href="dashboard.html" class="bnav-item"><i class="fa-solid fa-grid-2"></i><span>Dashboard</span></a>
+</nav>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, updateDoc, increment, collection, addDoc, query, where, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const app = initializeApp({
+    apiKey:"AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
+    authDomain:"mt-studio-92d1e.firebaseapp.com",
+    projectId:"mt-studio-92d1e",
+    storageBucket:"mt-studio-92d1e.firebasestorage.app",
+    messagingSenderId:"455687864985",
+    appId:"1:455687864985:web:327dedaffdb7b5f8606e08"
+  });
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const CONTENT_COST = 3;
+  const WORKER_URL = 'https://hidden-sky-3109.studiomt46.workers.dev';
+  let currentUser = null;
+  let userCredits = 0;
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      currentUser = user;
+      const snap = await getDoc(doc(db, 'users', user.uid));
+      if (snap.exists()) userCredits = snap.data().credits || 0;
+      updateCreditsDisplay();
+      await loadHistory(user.uid);
+    } else {
+      document.getElementById('creditsDisplay').textContent = 'Login করো';
+    }
+  });
+
+  function updateCreditsDisplay() {
+    document.getElementById('creditsDisplay').textContent = userCredits + ' credits';
+  }
+
+  window.generateContent = async function() {
+    const topic = document.getElementById('topicInput').value.trim();
+    if (!topic) { alert('Topic লেখো!'); return; }
+
+    if (!currentUser) {
+      if (confirm('Login করতে হবে। যাবে?')) window.location.href = 'index.html';
+      return;
+    }
+    if (userCredits < CONTENT_COST) {
+      alert(`Credits কম! দরকার ${CONTENT_COST}`);
+      return;
+    }
+
+    const type = window.selectedType || 'blog';
+    const lang = document.getElementById('langSelect').value;
+    const tone = document.getElementById('toneSelect').value;
+
+    const typePrompts = {
+      blog: `Write a blog post about: "${topic}". Make it engaging with headers and paragraphs.`,
+      social: `Write a social media post (Facebook/Instagram) about: "${topic}". Include emojis and hashtags.`,
+      ad: `Write a compelling advertisement copy for: "${topic}". Focus on benefits and call-to-action.`,
+      product: `Write a product description for: "${topic}". Include features, benefits, and why to buy.`
+    };
+
+    const langInstructions = {
+      bn: 'Write entirely in Bengali (বাংলা).',
+      en: 'Write entirely in English.',
+      mixed: 'Write in a mix of Bengali and English (Banglish style).'
+    };
+
+    const systemPrompt = `You are a professional content writer. ${langInstructions[lang]} Use a ${tone} tone. Be creative and engaging. No markdown formatting.`;
+
+    document.getElementById('genBtn').disabled = true;
+    document.getElementById('resultArea').classList.remove('hidden');
+    document.getElementById('loadingBox').classList.remove('hidden');
+    document.getElementById('contentResult').classList.add('hidden');
+    document.getElementById('errorBox').classList.add('hidden');
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: typePrompts[type] }
+          ]
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.choices && data.choices[0]) {
+        const content = data.choices[0].message.content;
+        document.getElementById('resultText').textContent = content;
+        document.getElementById('loadingBox').classList.add('hidden');
+        document.getElementById('contentResult').classList.remove('hidden');
+
+        // Deduct credits
+        await updateDoc(doc(db, 'users', currentUser.uid), { credits: increment(-CONTENT_COST) });
+        userCredits -= CONTENT_COST;
+        updateCreditsDisplay();
+
+        // Save to Firebase
+        await addDoc(collection(db, 'content'), {
+          userId: currentUser.uid,
+          type, topic, lang, tone,
+          content: content,
+          createdAt: serverTimestamp()
+        });
+
+        await loadHistory(currentUser.uid);
+      } else {
+        throw new Error(data.error || 'Failed');
+      }
+
+    } catch(err) {
+      document.getElementById('loadingBox').classList.add('hidden');
+      document.getElementById('errorBox').classList.remove('hidden');
+      document.getElementById('errorBox').textContent = '❌ ' + err.message;
+    }
+
+    document.getElementById('genBtn').disabled = false;
+  };
+
+  window.copyContent = function() {
+    const text = document.getElementById('resultText').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+      setTimeout(() => { btn.innerHTML = '<i class="fa-solid fa-copy"></i> Copy'; }, 2000);
+    });
+  };
+
+  async function loadHistory(uid) {
+    try {
+      const q = query(collection(db, 'content'), where('userId','==',uid), orderBy('createdAt','desc'));
+      const snap = await getDocs(q);
+      const list = document.getElementById('historyList');
+      if (snap.empty) {
+        list.innerHTML = '<div class="text-center py-6 text-slate-600 text-xs">এখনো কোনো content তৈরি হয়নি</div>';
+        return;
+      }
+      const typeEmoji = { blog:'📝', social:'📱', ad:'📢', product:'🛍️' };
+      list.innerHTML = snap.docs.slice(0, 10).map(d => {
+        const data = d.data();
+        return `
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 cursor-pointer hover:border-slate-600 transition" onclick="showContent('${d.id}')">
+            <div class="flex items-center gap-2 mb-1">
+              <span>${typeEmoji[data.type] || '📄'}</span>
+              <span class="text-xs font-bold text-white">${data.topic.slice(0,40)}</span>
+            </div>
+            <p class="text-xs text-slate-500 line-clamp-2">${data.content.slice(0,80)}...</p>
+          </div>
+        `;
+      }).join('');
+    } catch(e) { console.error(e); }
+  }
+
+  window.selectedType = 'blog';
+  window.selectType = function(card, type) {
+    document.querySelectorAll('.type-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    window.selectedType = type;
+  };
+</script>
+
+</body>
+</html>

@@ -1,414 +1,423 @@
 <!DOCTYPE html>
-<html lang="bn" class="scroll-smooth">
+<html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MT Studio - Bold AI Creative Suite</title>
-  <meta name="description" content="Create stunning images, videos, and content with AI. MT Studio's bold creative suite for modern creators.">
-  <meta name="theme-color" content="#000000">
+  <title>MT Studio - AI Creative Suite</title>
   <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      background: #000000;
-      color: #ffffff;
-      font-family: 'Outfit', sans-serif;
-      overflow-x: hidden;
-    }
+    body { background: #000; color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
 
-    /* Gradient backgrounds */
-    .gradient-purple { background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); }
-    .gradient-cyan { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
-    .gradient-pink { background: linear-gradient(135deg, #f43f5e 0%, #ec4899 100%); }
-    .gradient-orange { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
-
-    /* Animations */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(168, 139, 250, 0.5); }
-      50% { box-shadow: 0 0 40px rgba(168, 139, 250, 0.8); }
-    }
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-50px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(50px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes slideInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes pulse-glow {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+    @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes glow { 0%,100%{box-shadow:0 0 20px rgba(168,139,250,0.4)} 50%{box-shadow:0 0 50px rgba(168,139,250,0.8)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
     .animate-float { animation: float 3s ease-in-out infinite; }
+    .animate-slide-up { animation: slideUp 0.7s ease-out; }
     .animate-glow { animation: glow 2s ease-in-out infinite; }
-    .animate-slide-left { animation: slideInLeft 0.8s ease-out; }
-    .animate-slide-right { animation: slideInRight 0.8s ease-out; }
-    .animate-slide-up { animation: slideInUp 0.8s ease-out; }
-    .animate-scale-in { animation: scaleIn 0.8s ease-out; }
-    .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+    .animate-fade { animation: fadeIn 0.4s ease-out; }
 
-    /* Glass morphism */
-    .glass {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-    }
+    .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; }
+    .gradient-text { background: linear-gradient(135deg, #a78bfa, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-    /* Interactive buttons */
-    .btn-primary {
-      background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
-      border: none;
-      color: white;
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(168, 139, 250, 0.3);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(168, 139, 250, 0.5);
-    }
+    .btn-primary { background: linear-gradient(135deg, #a78bfa, #7c3aed); border: none; color: white; padding: 14px 28px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: 'Outfit', sans-serif; font-size: 15px; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(168,139,250,0.5); }
+    .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.2); color: white; padding: 12px 28px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Outfit', sans-serif; }
+    .btn-outline:hover { border-color: #a78bfa; background: rgba(167,139,250,0.1); }
 
-    .btn-outline {
-      background: transparent;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      padding: 12px 28px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .btn-outline:hover {
-      border-color: #a78bfa;
-      background: rgba(168, 139, 250, 0.1);
-    }
+    /* Modal */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+    .modal.open { display: flex; }
+    .modal-box { background: #111; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 32px 24px; width: 100%; max-width: 400px; animation: slideUp 0.3s ease-out; }
+
+    .input-field { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 14px 16px; color: white; font-size: 15px; font-family: 'Outfit', sans-serif; outline: none; transition: border 0.3s; }
+    .input-field:focus { border-color: #a78bfa; }
+    .input-field::placeholder { color: #666; }
 
     /* Feature cards */
-    .feature-card {
-      background: #111111;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 32px 24px;
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(168, 139, 250, 0.1) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    .feature-card:hover {
-      border-color: rgba(168, 139, 250, 0.5);
-      transform: translateY(-8px);
-      box-shadow: 0 20px 50px rgba(168, 139, 250, 0.2);
-    }
-    .feature-card:hover::before { opacity: 1; }
-
-    .feature-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      margin-bottom: 20px;
-      transition: transform 0.4s;
-    }
-    .feature-card:hover .feature-icon { transform: scale(1.1) rotate(5deg); }
+    .feature-card { background: #111; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 24px; transition: all 0.3s; cursor: pointer; text-decoration: none; display: block; }
+    .feature-card:hover { border-color: rgba(168,139,250,0.4); transform: translateY(-4px); background: #151515; }
 
     /* Bottom nav */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 70px;
-      background: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 100;
-    }
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      color: #666666;
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: 600;
-      transition: all 0.3s;
-      text-align: center;
-    }
-    .nav-item:hover, .nav-item.active { color: #a78bfa; }
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-around; align-items: center; z-index: 100; }
+    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #555; text-decoration: none; font-size: 10px; font-weight: 600; transition: all 0.3s; }
+    .nav-item.active, .nav-item:hover { color: #a78bfa; }
     .nav-item i { font-size: 20px; }
+
+    /* Top bar */
+    .top-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+    /* Error / Success */
+    .alert { padding: 12px 16px; border-radius: 10px; font-size: 13px; margin-bottom: 16px; display: none; }
+    .alert.show { display: block; }
+    .alert-error { background: rgba(244,63,94,0.2); border: 1px solid rgba(244,63,94,0.4); color: #fda4af; }
+    .alert-success { background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4); color: #6ee7b7; }
+
+    /* Spinner */
+    .spinner { width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 0.8s linear infinite; display: inline-block; margin-right: 8px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Credit badge */
+    .credit-badge { background: linear-gradient(135deg, #f97316, #ea580c); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
   </style>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="fixed top-0 left-0 right-0 z-50 glass mx-4 my-4 rounded-2xl max-w-md mx-auto">
-  <div class="flex items-center justify-between px-6 py-4">
-    <div class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-lg overflow-hidden border border-purple-500">
-        <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover">
-      </div>
-      <span class="font-bold text-sm">MT Studio</span>
-    </div>
-    <div class="flex gap-2">
-      <button class="btn-outline text-xs px-3 py-2 rounded-lg" onclick="alert('Login')">Login</button>
-      <button class="btn-primary text-xs px-4 py-2" onclick="alert('Signup')">Start Free</button>
-    </div>
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="flex items-center gap-3">
+    <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-9 h-9 rounded-xl" onerror="this.style.display='none'">
+    <span class="font-bold text-lg">MT Studio</span>
   </div>
-</nav>
+  <div class="flex gap-2" id="authButtons">
+    <button class="btn-outline text-sm py-2 px-4" onclick="openModal('loginModal')">লগইন</button>
+    <button class="btn-primary text-sm py-2 px-4" onclick="openModal('signupModal')">শুরু করো</button>
+  </div>
+  <div class="hidden items-center gap-3" id="userBar">
+    <span class="credit-badge" id="creditDisplay">⚡ ...</span>
+    <button class="btn-outline text-sm py-2 px-4" onclick="goToDashboard()">Dashboard</button>
+  </div>
+</div>
 
-<!-- Main Content -->
-<main class="pt-24 pb-80 px-4">
+<!-- HERO SECTION -->
+<main style="padding-top: 80px; padding-bottom: 100px;">
 
-  <!-- Hero Section -->
-  <section class="max-w-6xl mx-auto mb-20">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      
-      <!-- Left: Text Content -->
-      <div class="animate-slide-left">
-        <span class="inline-block px-4 py-2 gradient-purple rounded-full text-xs font-bold text-white mb-4">✨ AI-Powered Creativity</span>
-        
-        <h1 class="text-5xl lg:text-6xl font-black leading-tight mb-6">
-          Create Bold,<br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">
-            Stunning Content
-          </span>
-        </h1>
-        
-        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-          Generate AI images with reference photos, create viral videos, and write compelling content—all in one bold creative suite.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 mb-8">
-          <button class="btn-primary flex items-center justify-center gap-2">
-            <i class="fa-solid fa-rocket"></i> Start Creating Now
-          </button>
-          <button class="btn-outline flex items-center justify-center gap-2">
-            <i class="fa-solid fa-play"></i> Watch Demo
-          </button>
-        </div>
-
-        <div class="flex gap-8 text-sm">
-          <div>
-            <div class="text-2xl font-black gradient-purple bg-clip-text text-transparent">500+</div>
-            <div class="text-gray-400">Active Creators</div>
-          </div>
-          <div>
-            <div class="text-2xl font-black gradient-cyan bg-clip-text text-transparent">50K+</div>
-            <div class="text-gray-400">Images Generated</div>
-          </div>
-          <div>
-            <div class="text-2xl font-black gradient-pink bg-clip-text text-transparent">4.9★</div>
-            <div class="text-gray-400">User Rating</div>
-          </div>
-        </div>
+  <!-- Hero -->
+  <section class="text-center px-6 py-16 animate-slide-up">
+    <div class="inline-block bg-purple-500/20 border border-purple-500/30 rounded-full px-4 py-2 text-sm font-bold mb-6">
+      🎁 সাইনআপে ১০০ ক্রেডিট ফ্রী!
+    </div>
+    <h1 class="text-5xl font-black mb-4 leading-tight">
+      AI দিয়ে<br>
+      <span class="gradient-text">সব কিছু বানাও</span>
+    </h1>
+    <p class="text-gray-400 text-lg mb-10 max-w-sm mx-auto">ছবি, ভিডিও, কন্টেন্ট — সব এক জায়গায়। বাংলায়।</p>
+    <div class="flex gap-3 justify-center flex-wrap">
+      <button class="btn-primary animate-glow" onclick="openModal('signupModal')">
+        বিনামূল্যে শুরু করো 🚀
+      </button>
+      <button class="btn-outline" onclick="openModal('loginModal')">
+        লগইন করো
+      </button>
+    </div>
+    
+    <!-- Stats -->
+    <div class="flex justify-center gap-8 mt-12">
+      <div>
+        <p class="text-2xl font-black gradient-text">১০০+</p>
+        <p class="text-xs text-gray-500">ব্যবহারকারী</p>
       </div>
-
-      <!-- Right: Visual -->
-      <div class="animate-slide-right">
-        <div class="relative">
-          <!-- Large gradient card -->
-          <div class="gradient-purple rounded-3xl p-8 text-white shadow-2xl animate-float" style="animation-delay: 0s">
-            <i class="fa-solid fa-wand-magic-sparkles text-4xl mb-4"></i>
-            <h3 class="text-2xl font-bold mb-2">Image Generator</h3>
-            <p class="text-sm opacity-90">AI-powered with reference images</p>
-          </div>
-
-          <!-- Floating cards -->
-          <div class="gradient-cyan rounded-2xl p-6 text-white shadow-xl absolute -bottom-8 -right-8 animate-float" style="animation-delay: 0.2s">
-            <i class="fa-solid fa-video text-2xl mb-2"></i>
-            <p class="text-xs font-bold">Video Gen</p>
-          </div>
-
-          <div class="gradient-orange rounded-2xl p-6 text-white shadow-xl absolute -top-8 -right-16 animate-float" style="animation-delay: 0.4s">
-            <i class="fa-solid fa-pen-fancy text-2xl mb-2"></i>
-            <p class="text-xs font-bold">Content</p>
-          </div>
-        </div>
+      <div>
+        <p class="text-2xl font-black gradient-text">৫০০০+</p>
+        <p class="text-xs text-gray-500">ছবি তৈরি</p>
+      </div>
+      <div>
+        <p class="text-2xl font-black gradient-text">৯৯%</p>
+        <p class="text-xs text-gray-500">সন্তুষ্ট</p>
       </div>
     </div>
   </section>
 
-  <!-- Features Grid -->
-  <section class="max-w-6xl mx-auto mb-20">
-    <h2 class="text-4xl font-black text-center mb-4">Powerful Tools for Every Creator</h2>
-    <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">From AI image generation with reference support to professional video creation and content writing.</p>
+  <!-- Feature Cards -->
+  <section class="px-5 mb-12">
+    <h2 class="text-2xl font-black text-center mb-8">যা যা করতে পারবে</h2>
+    <div class="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      <!-- Image Generator Card -->
-      <div class="feature-card animate-scale-in" style="animation-delay: 0.1s">
-        <div class="feature-icon gradient-purple">🖼️</div>
-        <h3 class="text-xl font-bold mb-3">Image Generator</h3>
-        <p class="text-sm text-gray-400 mb-4">Upload reference photos and generate stunning AI images with exact style control.</p>
-        <a href="image-generator.html" class="text-purple-400 text-sm font-bold hover:text-purple-300 flex items-center gap-2">
-          Explore <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
-      </div>
+      <a href="image-generator.html" class="feature-card">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-3 animate-float">
+          <i class="fa-solid fa-image text-purple-400 text-xl"></i>
+        </div>
+        <h3 class="font-bold mb-1">AI ছবি</h3>
+        <p class="text-xs text-gray-500">টেক্সট থেকে ছবি বানাও</p>
+        <p class="text-xs text-orange-400 mt-2 font-bold">৫ ক্রেডিট</p>
+      </a>
 
-      <!-- Video Generator Card -->
-      <div class="feature-card animate-scale-in" style="animation-delay: 0.2s">
-        <div class="feature-icon gradient-cyan">🎬</div>
-        <h3 class="text-xl font-bold mb-3">Video Generator</h3>
-        <p class="text-sm text-gray-400 mb-4">Create professional videos from text prompts. Shorts, reels, and full-length content.</p>
-        <a href="video-generator.html" class="text-cyan-400 text-sm font-bold hover:text-cyan-300 flex items-center gap-2">
-          Explore <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
-      </div>
+      <a href="video-generator.html" class="feature-card">
+        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-3 animate-float" style="animation-delay:0.5s">
+          <i class="fa-solid fa-video text-cyan-400 text-xl"></i>
+        </div>
+        <h3 class="font-bold mb-1">AI ভিডিও</h3>
+        <p class="text-xs text-gray-500">স্বয়ংক্রিয় ভিডিও তৈরি</p>
+        <p class="text-xs text-orange-400 mt-2 font-bold">২০ ক্রেডিট</p>
+      </a>
 
-      <!-- Content Writer Card -->
-      <div class="feature-card animate-scale-in" style="animation-delay: 0.3s">
-        <div class="feature-icon gradient-pink">✍️</div>
-        <h3 class="text-xl font-bold mb-3">Content Writer</h3>
-        <p class="text-sm text-gray-400 mb-4">Blog posts, social media captions, ads, and product descriptions in seconds.</p>
-        <a href="content-writer.html" class="text-pink-400 text-sm font-bold hover:text-pink-300 flex items-center gap-2">
-          Explore <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
-      </div>
+      <a href="content-writer.html" class="feature-card">
+        <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-3 animate-float" style="animation-delay:1s">
+          <i class="fa-solid fa-pen-nib text-pink-400 text-xl"></i>
+        </div>
+        <h3 class="font-bold mb-1">কন্টেন্ট</h3>
+        <p class="text-xs text-gray-500">ব্লগ, পোস্ট, বিজ্ঞাপন</p>
+        <p class="text-xs text-orange-400 mt-2 font-bold">৩ ক্রেডিট</p>
+      </a>
 
-      <!-- AI Chat Card -->
-      <div class="feature-card animate-scale-in" style="animation-delay: 0.4s">
-        <div class="feature-icon gradient-orange">💬</div>
-        <h3 class="text-xl font-bold mb-3">AI Chat</h3>
-        <p class="text-sm text-gray-400 mb-4">Real-time conversations with advanced AI. Brainstorm ideas and get instant feedback.</p>
-        <a href="chat.html" class="text-orange-400 text-sm font-bold hover:text-orange-300 flex items-center gap-2">
-          Explore <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
-      </div>
+      <a href="chat.html" class="feature-card">
+        <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center mb-3 animate-float" style="animation-delay:1.5s">
+          <i class="fa-solid fa-message text-orange-400 text-xl"></i>
+        </div>
+        <h3 class="font-bold mb-1">AI চ্যাট</h3>
+        <p class="text-xs text-gray-500">যেকোনো প্রশ্নের উত্তর</p>
+        <p class="text-xs text-orange-400 mt-2 font-bold">১ ক্রেডিট</p>
+      </a>
+
     </div>
   </section>
 
   <!-- Pricing Preview -->
-  <section class="max-w-6xl mx-auto mb-20">
-    <h2 class="text-4xl font-black text-center mb-4">Simple, Bold Pricing</h2>
-    <p class="text-center text-gray-400 mb-12">Start free, upgrade when you're ready.</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="glass p-8 rounded-2xl border-l-4 border-purple-500 hover:border-purple-400 transition">
-        <h3 class="text-2xl font-bold mb-2">Free</h3>
-        <p class="text-4xl font-black gradient-purple bg-clip-text text-transparent mb-6">$0</p>
-        <ul class="space-y-3 mb-8 text-sm">
-          <li class="flex gap-2"><i class="fa-solid fa-check text-purple-400"></i> 20 credits</li>
-          <li class="flex gap-2"><i class="fa-solid fa-check text-purple-400"></i> 2 images/month</li>
-          <li class="flex gap-2"><i class="fa-solid fa-check text-purple-400"></i> Chat access</li>
-          <li class="flex gap-2"><i class="fa-solid fa-xmark text-gray-600"></i> No videos</li>
-        </ul>
-        <button class="btn-outline w-full">Get Started</button>
+  <section class="px-5 mb-12">
+    <h2 class="text-2xl font-black text-center mb-8">প্ল্যান ও মূল্য</h2>
+    <div class="grid grid-cols-3 gap-3 max-w-2xl mx-auto">
+      <div class="glass p-4 text-center">
+        <p class="font-bold text-sm mb-1">ফ্রি</p>
+        <p class="text-2xl font-black">০৳</p>
+        <p class="text-xs text-gray-500 mt-1">১০০ ক্রেডিট</p>
       </div>
-
-      <div class="glass p-8 rounded-2xl border-l-4 border-cyan-500 hover:border-cyan-400 transition ring-2 ring-cyan-500/20">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h3 class="text-2xl font-bold">Pro</h3>
-            <p class="text-xs text-gray-400">Most Popular</p>
-          </div>
-          <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs font-bold">Save 20%</span>
-        </div>
-        <p class="text-4xl font-black gradient-cyan bg-clip-text text-transparent mb-6">$9.99<span class="text-lg text-gray-400">/mo</span></p>
-        <ul class="space-y-3 mb-8 text-sm">
-          <li class="flex gap-2"><i class="fa-solid fa-check text-cyan-400"></i> 2000 credits</li>
-          <li class="flex gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Unlimited images</li>
-          <li class="flex gap-2"><i class="fa-solid fa-check text-cyan-400"></i> 100 videos</li>
-          <li class="flex gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Priority support</li>
-        </ul>
-        <button class="btn-primary w-full">Upgrade to Pro</button>
+      <div class="glass p-4 text-center ring-2 ring-purple-500/40">
+        <p class="font-bold text-sm mb-1 text-purple-400">প্রো ⭐</p>
+        <p class="text-2xl font-black">৳৪৯৯</p>
+        <p class="text-xs text-gray-500 mt-1">২০০০ ক্রেডিট/মাস</p>
       </div>
-
-      <div class="glass p-8 rounded-2xl border-l-4 border-pink-500 hover:border-pink-400 transition">
-        <h3 class="text-2xl font-bold mb-2">Business</h3>
-        <p class="text-4xl font-black gradient-pink bg-clip-text text-transparent mb-6">$29.99<span class="text-lg text-gray-400">/mo</span></p>
-        <ul class="space-y-3 mb-8 text-sm">
-          <li class="flex gap-2"><i class="fa-solid fa-check text-pink-400"></i> 10K credits</li>
-          <li class="flex gap-2"><i class="fa-solid fa-check text-pink-400"></i> Everything Pro</li>
-          <li class="flex gap-2"><i class="fa-solid fa-check text-pink-400"></i> Unlimited videos</li>
-          <li class="flex gap-2"><i class="fa-solid fa-check text-pink-400"></i> API access</li>
-        </ul>
-        <button class="btn-outline w-full">Contact Sales</button>
+      <div class="glass p-4 text-center">
+        <p class="font-bold text-sm mb-1">বিজনেস</p>
+        <p class="text-2xl font-black">৳১৪৯৯</p>
+        <p class="text-xs text-gray-500 mt-1">১০,০০০ ক্রেডিট/মাস</p>
       </div>
     </div>
-
-    <div class="text-center mt-8">
-      <a href="pricing.html" class="text-purple-400 font-bold hover:text-purple-300 flex items-center justify-center gap-2">
-        See all pricing plans <i class="fa-solid fa-arrow-right"></i>
-      </a>
+    <div class="text-center mt-4">
+      <a href="pricing.html" class="text-purple-400 text-sm font-bold">বিস্তারিত দেখো →</a>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="max-w-4xl mx-auto mb-20">
-    <div class="glass p-12 rounded-3xl text-center">
-      <h2 class="text-4xl font-black mb-4">Ready to Create Bold Content?</h2>
-      <p class="text-lg text-gray-300 mb-8">Join 500+ creators who are already generating stunning AI content.</p>
-      <button class="btn-primary px-8 py-4 text-lg">Start Free Today</button>
+  <!-- CTA -->
+  <section class="px-5 mb-4">
+    <div class="glass p-8 text-center">
+      <h2 class="text-2xl font-black mb-3">এখনই শুরু করো</h2>
+      <p class="text-gray-400 mb-6 text-sm">১০০ ফ্রি ক্রেডিট। কোনো কার্ড লাগবে না।</p>
+      <button class="btn-primary w-full" onclick="openModal('signupModal')">
+        ফ্রি একাউন্ট বানাও 🎉
+      </button>
     </div>
   </section>
 
 </main>
 
-<!-- Bottom Navigation -->
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-  <a href="#" class="nav-item active">
-    <i class="fa-solid fa-house"></i>
-    <span>Home</span>
+  <a href="index.html" class="nav-item active">
+    <i class="fa-solid fa-house"></i><span>Home</span>
   </a>
   <a href="image-generator.html" class="nav-item">
-    <i class="fa-solid fa-image"></i>
-    <span>Image</span>
+    <i class="fa-solid fa-image"></i><span>Image</span>
   </a>
   <a href="video-generator.html" class="nav-item">
-    <i class="fa-solid fa-video"></i>
-    <span>Video</span>
+    <i class="fa-solid fa-video"></i><span>Video</span>
   </a>
   <a href="chat.html" class="nav-item">
-    <i class="fa-solid fa-message"></i>
-    <span>Chat</span>
+    <i class="fa-solid fa-message"></i><span>Chat</span>
   </a>
   <a href="pricing.html" class="nav-item">
-    <i class="fa-solid fa-coins"></i>
-    <span>Pricing</span>
+    <i class="fa-solid fa-coins"></i><span>Pricing</span>
   </a>
 </nav>
+
+<!-- SIGNUP MODAL -->
+<div class="modal" id="signupModal">
+  <div class="modal-box">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-black">একাউন্ট বানাও</h2>
+      <button onclick="closeModal('signupModal')" class="text-gray-500 hover:text-white text-xl">✕</button>
+    </div>
+
+    <div class="bg-purple-500/20 border border-purple-500/30 rounded-xl p-3 mb-6 text-center">
+      <p class="text-sm font-bold">🎁 সাইনআপ করলেই ১০০ ক্রেডিট ফ্রী পাবে!</p>
+    </div>
+
+    <div id="signupAlert" class="alert"></div>
+
+    <div class="space-y-4">
+      <input type="text" id="signupName" class="input-field" placeholder="তোমার নাম">
+      <input type="email" id="signupEmail" class="input-field" placeholder="ইমেইল">
+      <input type="password" id="signupPassword" class="input-field" placeholder="পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)">
+      <button class="btn-primary w-full" id="signupBtn" onclick="handleSignup()">
+        ফ্রি একাউন্ট বানাও 🚀
+      </button>
+    </div>
+
+    <p class="text-center text-gray-500 text-sm mt-4">
+      আগে থেকে একাউন্ট আছে? 
+      <span class="text-purple-400 cursor-pointer font-bold" onclick="switchModal('signupModal','loginModal')">লগইন করো</span>
+    </p>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-black">লগইন করো</h2>
+      <button onclick="closeModal('loginModal')" class="text-gray-500 hover:text-white text-xl">✕</button>
+    </div>
+
+    <div id="loginAlert" class="alert"></div>
+
+    <div class="space-y-4">
+      <input type="email" id="loginEmail" class="input-field" placeholder="ইমেইল">
+      <input type="password" id="loginPassword" class="input-field" placeholder="পাসওয়ার্ড">
+      <button class="btn-primary w-full" id="loginBtn" onclick="handleLogin()">
+        লগইন করো
+      </button>
+    </div>
+
+    <p class="text-center text-gray-500 text-sm mt-4">
+      একাউন্ট নেই? 
+      <span class="text-purple-400 cursor-pointer font-bold" onclick="switchModal('loginModal','signupModal')">ফ্রি সাইনআপ করো</span>
+    </p>
+  </div>
+</div>
+
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
+    authDomain: "mt-studio-92d1e.firebaseapp.com",
+    projectId: "mt-studio-92d1e",
+    storageBucket: "mt-studio-92d1e.firebasestorage.app",
+    messagingSenderId: "455687864985",
+    appId: "1:455687864985:web:327dedaffdb7b5f8606e08"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // Auth state
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      document.getElementById('authButtons').classList.add('hidden');
+      document.getElementById('userBar').classList.remove('hidden');
+      document.getElementById('userBar').classList.add('flex');
+
+      // Load credits
+      const userDoc = await getDoc(doc(db, 'users', user.uid));
+      if (userDoc.exists()) {
+        const credits = userDoc.data().credits || 0;
+        document.getElementById('creditDisplay').textContent = `⚡ ${credits} ক্রেডিট`;
+      }
+    }
+  });
+
+  // Signup
+  window.handleSignup = async () => {
+    const name = document.getElementById('signupName').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const password = document.getElementById('signupPassword').value;
+    const btn = document.getElementById('signupBtn');
+    const alert = document.getElementById('signupAlert');
+
+    if (!name || !email || !password) {
+      showAlert('signupAlert', 'সব তথ্য দাও।', 'error');
+      return;
+    }
+    if (password.length < 6) {
+      showAlert('signupAlert', 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষর হতে হবে।', 'error');
+      return;
+    }
+
+    btn.innerHTML = '<span class="spinner"></span> একটু অপেক্ষা...';
+    btn.disabled = true;
+
+    try {
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      const user = result.user;
+
+      await updateProfile(user, { displayName: name });
+
+      // Save user with 100 credits
+      await setDoc(doc(db, 'users', user.uid), {
+        uid: user.uid,
+        name: name,
+        email: email,
+        credits: 100,
+        signupBonus: true,
+        currency: 'BDT',
+        createdAt: serverTimestamp(),
+        totalEarned: 100,
+        totalSpent: 0,
+        plan: 'free'
+      });
+
+      showAlert('signupAlert', '✅ সাইনআপ সফল! ১০০ ক্রেডিট পেয়েছো!', 'success');
+
+      setTimeout(() => {
+        closeModal('signupModal');
+        window.location.href = 'dashboard.html';
+      }, 1500);
+
+    } catch (error) {
+      let msg = 'কোনো সমস্যা হয়েছে। আবার চেষ্টা করো।';
+      if (error.code === 'auth/email-already-in-use') msg = 'এই ইমেইল দিয়ে আগেই একাউন্ট আছে।';
+      if (error.code === 'auth/invalid-email') msg = 'ইমেইল সঠিক নয়।';
+      if (error.code === 'auth/weak-password') msg = 'পাসওয়ার্ড দুর্বল।';
+      showAlert('signupAlert', msg, 'error');
+      btn.innerHTML = 'ফ্রি একাউন্ট বানাও 🚀';
+      btn.disabled = false;
+    }
+  };
+
+  // Login
+  window.handleLogin = async () => {
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    const btn = document.getElementById('loginBtn');
+
+    if (!email || !password) {
+      showAlert('loginAlert', 'ইমেইল ও পাসওয়ার্ড দাও।', 'error');
+      return;
+    }
+
+    btn.innerHTML = '<span class="spinner"></span> লগইন হচ্ছে...';
+    btn.disabled = true;
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      showAlert('loginAlert', '✅ লগইন সফল!', 'success');
+      setTimeout(() => {
+        closeModal('loginModal');
+        window.location.href = 'dashboard.html';
+      }, 1000);
+    } catch (error) {
+      let msg = 'কোনো সমস্যা হয়েছে।';
+      if (error.code === 'auth/user-not-found') msg = 'এই ইমেইলে কোনো একাউন্ট নেই।';
+      if (error.code === 'auth/wrong-password') msg = 'পাসওয়ার্ড ভুল।';
+      if (error.code === 'auth/invalid-credential') msg = 'ইমেইল বা পাসওয়ার্ড ভুল।';
+      showAlert('loginAlert', msg, 'error');
+      btn.innerHTML = 'লগইন করো';
+      btn.disabled = false;
+    }
+  };
+
+  window.goToDashboard = () => { window.location.href = 'dashboard.html'; };
+
+  // Helpers
+  function showAlert(id, msg, type) {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.className = `alert show alert-${type}`;
+  }
+
+  window.openModal = (id) => { document.getElementById(id).classList.add('open'); };
+  window.closeModal = (id) => { document.getElementById(id).classList.remove('open'); };
+  window.switchModal = (from, to) => { closeModal(from); openModal(to); };
+</script>
 
 </body>
 </html>

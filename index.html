@@ -63,7 +63,7 @@
       </a>
     </div>
     <div class="flex items-center gap-2">
-      <button onclick="toggleModal(true)" class="nav-auth-btn text-sm font-semibold text-white bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg hover:bg-white/10 transition">Login</button>
+      <button onclick="handleNavAuthClick()" class="nav-auth-btn text-sm font-semibold text-white bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg hover:bg-white/10 transition">Login</button>
       <button onclick="toggleModal(true)" class="text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-violet-600 px-3 py-1.5 rounded-lg flex items-center gap-1 shadow-[0_0_14px_rgba(34,211,238,0.3)]">Start Free <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
     </div>
   </div>
@@ -113,13 +113,13 @@
   </div>
   <div class="max-w-md mx-auto px-4 pb-6">
     <div class="grid grid-cols-2 gap-3 mb-3">
-      <div onclick="openTool('image-to-prompt')" class="relative rounded-2xl overflow-hidden cursor-pointer group" style="height:140px;background:#0A0F1C;border:1px solid rgba(255,255,255,0.07);">
+      <div onclick="openServiceDetails('video')" class="relative rounded-2xl overflow-hidden cursor-pointer group" style="height:140px;background:#0A0F1C;border:1px solid rgba(255,255,255,0.07);">
         <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/edit%20image.jpeg" class="absolute inset-0 w-full h-full object-cover opacity-55 group-hover:opacity-70 transition-opacity">
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
         <div class="absolute top-3 left-3 w-8 h-8 rounded-xl bg-black/50 border border-white/10 flex items-center justify-center"><i class="fa-solid fa-image text-cyan-400 text-xs"></i></div>
         <div class="absolute bottom-3 left-0 right-0 text-center"><span class="text-sm font-bold text-white">ছবি এডিট</span></div>
       </div>
-      <div onclick="openTool('content')" class="relative rounded-2xl overflow-hidden cursor-pointer group" style="height:140px;background:#0A0F1C;border:1px solid rgba(255,255,255,0.07);">
+      <div onclick="openServiceDetails('video')" class="relative rounded-2xl overflow-hidden cursor-pointer group" style="height:140px;background:#0A0F1C;border:1px solid rgba(255,255,255,0.07);">
         <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/edit%20video.jpeg" class="absolute inset-0 w-full h-full object-cover opacity-55 group-hover:opacity-70 transition-opacity">
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
         <div class="absolute top-3 left-3 w-8 h-8 rounded-xl bg-black/50 border border-white/10 flex items-center justify-center"><i class="fa-solid fa-video text-violet-400 text-xs"></i></div>
@@ -205,7 +205,7 @@
       <div onclick="openServiceDetails('design')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-pink-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-pen-nib text-pink-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">UI / UX Design</h3><p class="text-slate-400 text-sm mb-2">ইউআই / ইউএক্স ডিজাইন</p><p class="text-slate-500 text-xs">Premium App Design</p></div>
       <div onclick="openServiceDetails('profile')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-blue-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-shield-halved text-blue-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">Profile Fix</h3><p class="text-slate-400 text-sm mb-2">প্রোফাইল ট্রাবলশুটিং</p><p class="text-slate-500 text-xs">Recovery & Restriction Removal</p></div>
       <div onclick="openServiceDetails('video')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-fuchsia-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-fuchsia-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-wand-magic text-fuchsia-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">Video & Photo</h3><p class="text-slate-400 text-sm mb-2">ভিডিও ও ফটো এডিটিং</p><p class="text-slate-500 text-xs">Reels, Shorts & Product</p></div>
-      <div onclick="openTool('image-to-prompt')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-emerald-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-robot text-emerald-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">AI Prompts</h3><p class="text-slate-400 text-sm mb-2">এআই প্রম্পট ইঞ্জিনিয়ারিং</p><p class="text-slate-500 text-xs">Midjourney · Flux · ChatGPT</p></div>
+      <div onclick="openServiceDetails('ai')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-emerald-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-robot text-emerald-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">AI Prompts</h3><p class="text-slate-400 text-sm mb-2">এআই প্রম্পট ইঞ্জিনিয়ারিং</p><p class="text-slate-500 text-xs">Midjourney · Flux · ChatGPT</p></div>
     </div>
   </div>
 </section>
@@ -303,7 +303,7 @@
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-12">
       <div><p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase flex items-center gap-2"><i class="fa-solid fa-rss"></i> Blog</p><h2 class="text-3xl font-bold text-white mb-2">আমাদের Blog</h2><p class="text-slate-400 text-sm">AI, ওয়েব ডেভেলপমেন্ট ও ডিজিটাল টিপস</p></div>
       <div class="flex gap-2 flex-wrap">
-        <button onclick="filterBlog('all')" id="filter-all" class="blog-filter-btn active-filter text-xs font-bold px-4 py-2 rounded-full border border-violet-500/40 bg-violet-500/10 text-violet-300">সব</button>
+        <button onclick="filterBlog('all')" id="filter-all" class="blog-filter-btn active-filter text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">সব</button>
         <button onclick="filterBlog('ওয়েব ডেভেলপমেন্ট')" id="filter-web" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">ওয়েব</button>
         <button onclick="filterBlog('AI Tools')" id="filter-ai" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">AI Tools</button>
         <button onclick="filterBlog('Facebook Tips')" id="filter-fb" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">Facebook</button>
@@ -344,7 +344,7 @@
         <div class="flex items-center gap-3 mb-6"><div class="w-11 h-11 rounded-xl overflow-hidden border border-cyan-500/30"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div><div><p class="text-white font-bold">MT Studio</p><p class="text-[10px] text-slate-400 uppercase tracking-widest">Digital Solutions</p></div></div>
         <div class="flex items-center gap-3 mb-6">
           <a href="https://www.facebook.com/MTstudio2" target="_blank" class="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:scale-110 transition-all shadow-[0_0_12px_rgba(24,119,242,0.5)]"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="https://www.facebook.com/MTstudio2" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white hover:scale-110 transition-all"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.instagram.com/mt_studio_ai" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white hover:scale-110 transition-all"><i class="fa-brands fa-instagram"></i></a>
           <a href="https://wa.me/19174199814" target="_blank" class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:scale-110 transition-all"><i class="fa-brands fa-whatsapp"></i></a>
           <a href="https://www.youtube.com/@MTStudio_2" target="_blank" class="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center text-white hover:scale-110 transition-all"><i class="fa-brands fa-youtube"></i></a>
         </div>
@@ -354,7 +354,7 @@
       <div><h4 class="text-white font-semibold mb-5 text-sm">Company</h4><ul class="space-y-3 text-sm text-slate-400"><li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li><li><a href="#faq" class="hover:text-white transition">FAQ</a></li><li><a href="#blog" class="hover:text-white transition">Blog</a></li><li><a href="#contact" class="hover:text-white transition">Contact Us</a></li><li><a href="#pricing" class="hover:text-white transition">Packages</a></li></ul></div>
       <div><h4 class="text-white font-semibold mb-5 text-sm">Support</h4><ul class="space-y-3 text-sm text-slate-400"><li><a href="https://wa.me/19174199814" target="_blank" class="hover:text-white transition">WhatsApp</a></li><li><a href="https://m.me/MTstudio2" target="_blank" class="hover:text-white transition">Messenger</a></li><li><a href="mailto:studiomt46@gmail.com" class="hover:text-white transition">Email</a></li></ul></div>
     </div>
-    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"><span class="text-slate-500 text-xs">© 2026 MT Studio Inc.</span><div class="flex gap-6 text-xs text-slate-500"><a href="#" onclick="event.preventDefault();showSuccessModal('শীঘ্রই আসছে','Privacy Policy পেজ তৈরি হচ্ছে।')" class="hover:text-white transition">Privacy</a><a href="#" onclick="event.preventDefault();showSuccessModal('শীঘ্রই আসছে','Terms of Use পেজ তৈরি হচ্ছে।')" class="hover:text-white transition">Terms of use</a></div></div>
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"><span class="text-slate-500 text-xs">© 2026 MT Studio Inc.</span><div class="flex gap-6 text-xs text-slate-500"><a href="privacy.html" class="hover:text-white transition">Privacy</a><a href="terms.html" class="hover:text-white transition">Terms of use</a></div></div>
   </div>
 </footer>
 
@@ -598,7 +598,7 @@
     window.isLoggedIn=!!user;
     document.querySelectorAll('.nav-auth-btn').forEach(btn=>{
       if(user){btn.innerHTML=`<div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full overflow-hidden border border-cyan-500/40"><img src="${user.photoURL||'https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg'}" class="w-full h-full object-cover"></div></div>`;}
-      else{btn.textContent='Login';btn.onclick=()=>toggleModal(true);}
+      else{btn.textContent='Login';}
     });
     // If user just signed up/logged in and had a pending AI action, run it now
     if(user && window.pendingAction){
@@ -607,11 +607,18 @@
       setTimeout(()=>{ closeModal2(); action(); }, 400);
     }
   });
+  window.handleNavAuthClick=()=>{
+    if(window.isLoggedIn){
+      if(confirm('আপনি লগ আউট করতে চান?')) window.fbSignOut();
+    }else{
+      toggleModal(true);
+    }
+  };
   function closeModal2(){ const m=document.getElementById('quoteModal'); if(m){ m.style.opacity='0'; document.body.style.overflow=''; setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);} }
-  window.firebaseGoogleSignIn=async()=>{try{await signInWithPopup(auth,new GoogleAuthProvider());if(!window.pendingAction)showSuccessModal("স্বাগতম! ✅","Google দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("Error","Google লগইন সমস্যা।",'error');}};
-  window.firebaseFacebookSignIn=async()=>{try{await signInWithPopup(auth,new FacebookAuthProvider());if(!window.pendingAction)showSuccessModal("স্বাগতম! ✅","Facebook দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("Error","Facebook লগইন সমস্যা।",'error');}};
-  window.firebaseSignUp=async(email,pass,first,last)=>{try{const c=await createUserWithEmailAndPassword(auth,email,pass);await updateProfile(c.user,{displayName:`${first} ${last}`});if(!window.pendingAction)showSuccessModal("স্বাগতম! 🎉","অ্যাকাউন্ট তৈরি হয়েছে!");toggleModal(false);}catch(e){const m={'auth/email-already-in-use':'এই Email-এ আগেই অ্যাকাউন্ট আছে।','auth/weak-password':'Password কমপক্ষে ৬ অক্ষর।'}[e.code]||'সমস্যা হয়েছে।';showSuccessModal("Error",m,'error');}};
-  window.firebaseSignIn=async(email,pass)=>{try{await signInWithEmailAndPassword(auth,email,pass);if(!window.pendingAction)showSuccessModal("স্বাগতম! ✅","সফলভাবে লগইন হয়েছে।");toggleModal(false);}catch(e){const m={'auth/user-not-found':'অ্যাকাউন্ট নেই।','auth/wrong-password':'Password ভুল।'}[e.code]||'লগইন সমস্যা।';showSuccessModal("Error",m,'error');}};
+  window.firebaseGoogleSignIn=async()=>{const hadPendingAction=!!window.pendingAction;try{await signInWithPopup(auth,new GoogleAuthProvider());if(!hadPendingAction)showSuccessModal("স্বাগতম! ✅","Google দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("Error","Google লগইন সমস্যা।",'error');}};
+  window.firebaseFacebookSignIn=async()=>{const hadPendingAction=!!window.pendingAction;try{await signInWithPopup(auth,new FacebookAuthProvider());if(!hadPendingAction)showSuccessModal("স্বাগতম! ✅","Facebook দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("Error","Facebook লগইন সমস্যা।",'error');}};
+  window.firebaseSignUp=async(email,pass,first,last)=>{const hadPendingAction=!!window.pendingAction;try{const c=await createUserWithEmailAndPassword(auth,email,pass);await updateProfile(c.user,{displayName:`${first} ${last}`});if(!hadPendingAction)showSuccessModal("স্বাগতম! 🎉","অ্যাকাউন্ট তৈরি হয়েছে!");toggleModal(false);}catch(e){const m={'auth/email-already-in-use':'এই Email-এ আগেই অ্যাকাউন্ট আছে।','auth/weak-password':'Password কমপক্ষে ৬ অক্ষর।'}[e.code]||'সমস্যা হয়েছে।';showSuccessModal("Error",m,'error');}};
+  window.firebaseSignIn=async(email,pass)=>{const hadPendingAction=!!window.pendingAction;try{await signInWithEmailAndPassword(auth,email,pass);if(!hadPendingAction)showSuccessModal("স্বাগতম! ✅","সফলভাবে লগইন হয়েছে।");toggleModal(false);}catch(e){const m={'auth/user-not-found':'অ্যাকাউন্ট নেই।','auth/wrong-password':'Password ভুল।'}[e.code]||'লগইন সমস্যা।';showSuccessModal("Error",m,'error');}};
   window.fbSignOut=async()=>{await signOut(auth);showSuccessModal("লগআউট","আবার দেখা হবে! 👋");};
   let allPosts=[];
   async function fetchPosts(){

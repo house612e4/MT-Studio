@@ -394,7 +394,7 @@
 </div>
 
 <!-- AI TOOL: Image to Prompt -->
-<div id="tool-image-to-prompt" class="tool-modal">
+<div id="tool-image-to-prompt" class="tool-modal" role="dialog" aria-modal="true">
   <div class="min-h-screen flex flex-col">
     <div class="bg-midnight/90 backdrop-blur-xl border-b border-white/10 px-5 py-4 flex items-center gap-3 sticky top-0 z-10">
       <button onclick="closeTool('image-to-prompt')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-arrow-left text-lg"></i></button>
@@ -420,7 +420,7 @@
 </div>
 
 <!-- AI TOOL: Content Writer -->
-<div id="tool-content" class="tool-modal">
+<div id="tool-content" class="tool-modal" role="dialog" aria-modal="true">
   <div class="min-h-screen flex flex-col">
     <div class="bg-midnight/90 backdrop-blur-xl border-b border-white/10 px-5 py-4 flex items-center gap-3 sticky top-0 z-10">
       <button onclick="closeTool('content')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-arrow-left text-lg"></i></button>
@@ -436,7 +436,7 @@
           <button onclick="selectContentType('ad',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-pink-500/40 text-left flex items-center gap-2"><i class="fa-solid fa-bullhorn text-pink-400"></i> Ad Copy</button>
         </div>
       </div>
-      <div class="mb-4"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">বিষয় / Topic</label><textarea id="contentTopic" rows="3" placeholder="যেমন: MT Studio-র ফ্রি ওয়েব ডিজাইন অফার..." class="tool-input resize-none"></textarea></div>
+      <div class="mb-4"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">বিষয় / Topic</label><textarea id="contentTopic" rows="3" placeholder="যেমন: MT Studio-র ফ্রি ওয়েব ডিজাইন অফার..." class="tool-input resize-none"></textarea><div id="contentTopicError" class="hidden mt-3"></div></div>
       <div class="mb-5"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Tone</label><select id="contentTone" class="tool-input"><option value="emotional">Emotional (আবেগময়)</option><option value="professional">Professional (পেশাদার)</option><option value="funny">Funny (মজাদার)</option><option value="urgent">Urgent (জরুরি)</option></select></div>
       <button onclick="generateContent()" id="contentBtn" class="tool-btn mb-5"><i class="fa-solid fa-sparkles mr-2"></i> কন্টেন্ট তৈরি করুন</button>
       <div id="contentLoading" class="hidden text-center py-6"><div class="w-8 h-8 border-2 border-cyan-500/30 border-t-cyan-400 rounded-full mx-auto mb-3" style="animation:spin 0.8s linear infinite;"></div><p id="contentLoadingMsg" class="text-slate-400 text-sm">AI লিখছে...</p></div>
@@ -447,7 +447,7 @@
 </div>
 
 <!-- AI TOOL: Web Builder -->
-<div id="tool-webgen" class="tool-modal">
+<div id="tool-webgen" class="tool-modal" role="dialog" aria-modal="true">
   <div class="min-h-screen flex flex-col">
     <div class="bg-midnight/90 backdrop-blur-xl border-b border-white/10 px-5 py-4 flex items-center gap-3 sticky top-0 z-10">
       <button onclick="closeTool('webgen')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-arrow-left text-lg"></i></button>
@@ -455,7 +455,7 @@
       <div><h2 class="text-white font-bold text-sm">AI Web Builder</h2><p class="text-slate-500 text-xs">requirement দিলে সাইট বানিয়ে দেবে</p></div>
     </div>
     <div class="flex-1 p-5 max-w-2xl mx-auto w-full">
-      <div class="mb-4"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Website-এর বিবরণ</label><textarea id="webReq" rows="5" placeholder="যেমন: আমার একটা রেস্টুরেন্টের ওয়েবসাইট লাগবে। নাম 'ভাত ঘর হোটেল'। মেনু, যোগাযোগ পেজ থাকবে। Dark theme, বাংলায়।" class="tool-input resize-none"></textarea></div>
+      <div class="mb-4"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Website-এর বিবরণ</label><textarea id="webReq" rows="5" placeholder="যেমন: আমার একটা রেস্টুরেন্টের ওয়েবসাইট লাগবে। নাম 'ভাত ঘর হোটেল'। মেনু, যোগাযোগ পেজ থাকবে। Dark theme, বাংলায়।" class="tool-input resize-none"></textarea><div id="webReqError" class="hidden mt-3"></div></div>
       <button onclick="generateWeb()" id="webBtn" class="tool-btn mb-5"><i class="fa-solid fa-code mr-2"></i> Website তৈরি করুন</button>
       <div id="webLoading" class="hidden text-center py-8"><div class="w-8 h-8 border-2 border-green-500/30 border-t-green-400 rounded-full mx-auto mb-3" style="animation:spin 0.8s linear infinite;"></div><p id="webLoadingMsg" class="text-slate-400 text-sm">AI কোড লিখছে...</p></div>
       <div id="webError" class="hidden mb-4"></div>
@@ -470,7 +470,7 @@
 </div>
 
 <!-- AI TOOL: Image Generator -->
-<div id="tool-image-gen" class="tool-modal">
+<div id="tool-image-gen" class="tool-modal" role="dialog" aria-modal="true">
   <div class="min-h-screen flex flex-col">
     <div class="bg-midnight/90 backdrop-blur-xl border-b border-white/10 px-5 py-4 flex items-center gap-3 sticky top-0 z-10">
       <button onclick="closeTool('image-gen')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-arrow-left text-lg"></i></button>
@@ -489,7 +489,7 @@
 </div>
 
 <!-- SERVICE DETAILS MODAL -->
-<div id="serviceDetailsModal" class="fixed inset-0 z-[105] hidden items-center justify-center bg-[#050B14]/95 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
+<div id="serviceDetailsModal" class="fixed inset-0 z-[105] hidden items-center justify-center bg-[#050B14]/95 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto" role="dialog" aria-modal="true">
   <button onclick="closeServiceDetails()" class="fixed top-5 right-5 text-slate-400 hover:text-white bg-white/5 rounded-full w-10 h-10 flex items-center justify-center z-[106]"><i class="fa-solid fa-xmark text-xl"></i></button>
   <div class="w-full max-w-3xl my-10">
     <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl overflow-hidden">
@@ -503,7 +503,7 @@
 </div>
 
 <!-- AUTH MODAL -->
-<div id="quoteModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
+<div id="quoteModal" class="fixed inset-0 z-[112] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="authTitle">
   <button onclick="toggleModal(false)" class="fixed top-5 right-5 text-slate-400 hover:text-white bg-white/5 rounded-full w-10 h-10 flex items-center justify-center z-[101]"><i class="fa-solid fa-xmark text-xl"></i></button>
   <div class="w-full max-w-md my-10">
     <div class="flex justify-center mb-6"><div class="w-14 h-14 rounded-2xl overflow-hidden border border-cyan-500/30"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div></div>
@@ -541,7 +541,7 @@
 </div>
 
 <!-- REVIEW MODAL -->
-<div id="reviewModal" class="fixed inset-0 z-[115] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300">
+<div id="reviewModal" class="fixed inset-0 z-[115] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true">
   <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl p-7 max-w-sm w-full relative">
     <button onclick="closeReviewModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-white/5 rounded-full w-8 h-8 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
     <div class="text-center mb-5">
@@ -563,9 +563,9 @@
 </div>
 
 <!-- SUCCESS MODAL -->
-<div id="successModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-md p-4 opacity-0 transition-opacity duration-300">
+<div id="successModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-md p-4 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="successTitle">
   <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl p-8 max-w-sm w-full text-center">
-    <div class="w-14 h-14 rounded-full bg-green-500/15 text-green-400 flex items-center justify-center text-2xl mb-4 mx-auto"><i class="fa-solid fa-check"></i></div>
+    <div id="successIconWrap" class="w-14 h-14 rounded-full bg-green-500/15 text-green-400 flex items-center justify-center text-2xl mb-4 mx-auto"><i id="successIcon" class="fa-solid fa-check"></i></div>
     <h3 id="successTitle" class="text-xl font-bold text-white mb-2">Success!</h3>
     <p id="successMessage" class="text-slate-400 text-sm mb-6">Done.</p>
     <button onclick="closeSuccessModal()" class="spring-press bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-xl transition">OK, Got it</button>
@@ -608,10 +608,10 @@
     }
   });
   function closeModal2(){ const m=document.getElementById('quoteModal'); if(m){ m.style.opacity='0'; document.body.style.overflow=''; setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);} }
-  window.firebaseGoogleSignIn=async()=>{try{await signInWithPopup(auth,new GoogleAuthProvider());showSuccessModal("স্বাগতম! ✅","Google দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("❌ Error","Google লগইন সমস্যা।");}};
-  window.firebaseFacebookSignIn=async()=>{try{await signInWithPopup(auth,new FacebookAuthProvider());showSuccessModal("স্বাগতম! ✅","Facebook দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("❌ Error","Facebook লগইন সমস্যা।");}};
-  window.firebaseSignUp=async(email,pass,first,last)=>{try{const c=await createUserWithEmailAndPassword(auth,email,pass);await updateProfile(c.user,{displayName:`${first} ${last}`});showSuccessModal("স্বাগতম! 🎉","অ্যাকাউন্ট তৈরি হয়েছে!");toggleModal(false);}catch(e){const m={'auth/email-already-in-use':'এই Email-এ আগেই অ্যাকাউন্ট আছে।','auth/weak-password':'Password কমপক্ষে ৬ অক্ষর।'}[e.code]||'সমস্যা হয়েছে।';showSuccessModal("❌ Error",m);}};
-  window.firebaseSignIn=async(email,pass)=>{try{await signInWithEmailAndPassword(auth,email,pass);showSuccessModal("স্বাগতম! ✅","সফলভাবে লগইন হয়েছে।");toggleModal(false);}catch(e){const m={'auth/user-not-found':'অ্যাকাউন্ট নেই।','auth/wrong-password':'Password ভুল।'}[e.code]||'লগইন সমস্যা।';showSuccessModal("❌ Error",m);}};
+  window.firebaseGoogleSignIn=async()=>{try{await signInWithPopup(auth,new GoogleAuthProvider());if(!window.pendingAction)showSuccessModal("স্বাগতম! ✅","Google দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("Error","Google লগইন সমস্যা।",'error');}};
+  window.firebaseFacebookSignIn=async()=>{try{await signInWithPopup(auth,new FacebookAuthProvider());if(!window.pendingAction)showSuccessModal("স্বাগতম! ✅","Facebook দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("Error","Facebook লগইন সমস্যা।",'error');}};
+  window.firebaseSignUp=async(email,pass,first,last)=>{try{const c=await createUserWithEmailAndPassword(auth,email,pass);await updateProfile(c.user,{displayName:`${first} ${last}`});if(!window.pendingAction)showSuccessModal("স্বাগতম! 🎉","অ্যাকাউন্ট তৈরি হয়েছে!");toggleModal(false);}catch(e){const m={'auth/email-already-in-use':'এই Email-এ আগেই অ্যাকাউন্ট আছে।','auth/weak-password':'Password কমপক্ষে ৬ অক্ষর।'}[e.code]||'সমস্যা হয়েছে।';showSuccessModal("Error",m,'error');}};
+  window.firebaseSignIn=async(email,pass)=>{try{await signInWithEmailAndPassword(auth,email,pass);if(!window.pendingAction)showSuccessModal("স্বাগতম! ✅","সফলভাবে লগইন হয়েছে।");toggleModal(false);}catch(e){const m={'auth/user-not-found':'অ্যাকাউন্ট নেই।','auth/wrong-password':'Password ভুল।'}[e.code]||'লগইন সমস্যা।';showSuccessModal("Error",m,'error');}};
   window.fbSignOut=async()=>{await signOut(auth);showSuccessModal("লগআউট","আবার দেখা হবে! 👋");};
   let allPosts=[];
   async function fetchPosts(){
@@ -702,7 +702,7 @@
     e.preventDefault();
     if(mode==='signup'){
       const f=e.target,first=f.querySelector('[placeholder="First name"]').value,last=f.querySelector('[placeholder="Last name"]').value,email=f.querySelector('[type="email"]').value,pass=document.getElementById('suPassword').value,confirmPass=document.getElementById('suConfirmPassword').value;
-      if(pass.length<6){showSuccessModal("❌ Error","Password কমপক্ষে ৬ অক্ষর।");return;}
+      if(pass.length<6){showSuccessModal("Error","Password কমপক্ষে ৬ অক্ষর।",'error');return;}
       if(pass!==confirmPass){document.getElementById('pwMismatchHint').classList.remove('hidden');return;}
       document.getElementById('pwMismatchHint').classList.add('hidden');
       window.firebaseSignUp(email,pass,first,last);
@@ -710,8 +710,16 @@
     else{const f=e.target,email=f.querySelector('[type="email"]').value,pass=document.getElementById('siPassword').value;window.firebaseSignIn(email,pass);}
   }
 
-  function showSuccessModal(title,msg){
+  function showSuccessModal(title,msg,type){
     document.getElementById('successTitle').textContent=title;document.getElementById('successMessage').textContent=msg;
+    const iconWrap=document.getElementById('successIconWrap'),icon=document.getElementById('successIcon');
+    if(type==='error'){
+      iconWrap.className='w-14 h-14 rounded-full bg-red-500/15 text-red-400 flex items-center justify-center text-2xl mb-4 mx-auto';
+      icon.className='fa-solid fa-triangle-exclamation';
+    }else{
+      iconWrap.className='w-14 h-14 rounded-full bg-green-500/15 text-green-400 flex items-center justify-center text-2xl mb-4 mx-auto';
+      icon.className='fa-solid fa-check';
+    }
     const m=document.getElementById('successModal');m.classList.remove('hidden');m.classList.add('flex');setTimeout(()=>m.style.opacity='1',10);
   }
   function updatePasswordStrength(){
@@ -777,7 +785,7 @@
     btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i> পাঠানো হচ্ছে...';
     emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{from_name:name.value,phone:phone.value,service_type:service.value,message:message.value})
     .then(()=>{showSuccessModal("মেসেজ পাঠানো হয়েছে! ✅","২৪ ঘণ্টার মধ্যে রিপ্লাই পাবেন।");f.reset();})
-    .catch(()=>showSuccessModal("সমস্যা হয়েছে ❌","WhatsApp বা Messenger-এ যোগাযোগ করুন।"))
+    .catch(()=>showSuccessModal("সমস্যা হয়েছে","WhatsApp বা Messenger-এ যোগাযোগ করুন।",'error'))
     .finally(()=>{btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-paper-plane text-sm mr-2"></i> মেসেজ পাঠান';});
   }
 
@@ -943,7 +951,12 @@
   }
   async function generateContent(){
     const topic=document.getElementById('contentTopic').value.trim();
-    if(!topic){showSuccessModal('❌','Topic লিখুন।');return;}
+    hideToolError('contentTopicError');
+    if(!topic){
+      showToolError('contentTopicError','একটি Topic লিখুন।',()=>{});
+      document.getElementById('contentTopic').focus();
+      return;
+    }
     requireAuth(()=>doGenerateContent());
   }
   let contentSlowTimer=null;
@@ -985,7 +998,13 @@
   // Web Builder
   let generatedWebCode='';
   async function generateWeb(){
-    const req=document.getElementById('webReq').value.trim();if(!req){showSuccessModal('❌','বিবরণ লিখুন।');return;}
+    const req=document.getElementById('webReq').value.trim();
+    hideToolError('webReqError');
+    if(!req){
+      showToolError('webReqError','Website-এর বিবরণ লিখুন।',()=>{});
+      document.getElementById('webReq').focus();
+      return;
+    }
     requireAuth(()=>doGenerateWeb());
   }
   let webSlowTimer=null;
@@ -1096,7 +1115,7 @@
     else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){ e.preventDefault(); const prev=Math.max(n-1,1); setStarRating(prev); document.querySelector(`.star-btn[data-star="${prev}"]`).focus(); }
   }
   async function submitReview(){
-    if(selectedStarRating===0){showSuccessModal('❌','একটি Rating দিন।');return;}
+    if(selectedStarRating===0){showSuccessModal('Rating দিন','একটি Rating সিলেক্ট করুন।','error');return;}
     const text=document.getElementById('reviewText').value.trim();
     const btn=document.getElementById('reviewSubmitBtn');
     btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i> জমা হচ্ছে...';
@@ -1105,7 +1124,7 @@
       closeReviewModal();
       showSuccessModal('ধন্যবাদ! 🙏','আপনার রিভিউ জমা হয়েছে।');
       setTimeout(()=>fetchReviewsAgain(),800);
-    }catch(e){ showSuccessModal('❌ Error','রিভিউ জমা দিতে সমস্যা হয়েছে।'); }
+    }catch(e){ showSuccessModal('Error','রিভিউ জমা দিতে সমস্যা হয়েছে।','error'); }
     finally{ btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-paper-plane mr-2"></i> জমা দিন'; }
   }
   function fetchReviewsAgain(){ if(window.fetchReviewsHook) window.fetchReviewsHook(); }
@@ -1116,6 +1135,17 @@
     sessionStorage.setItem('mtReviewPrompted','1');
     setTimeout(()=>openReviewModal(), 2500);
   }
+
+  // ── Accessibility: Escape key closes any open modal ──────
+  document.addEventListener('keydown', (e) => {
+    if(e.key !== 'Escape') return;
+    if(document.getElementById('quoteModal')?.classList.contains('flex')) toggleModal(false);
+    document.querySelectorAll('.tool-modal.open').forEach(m => closeTool(m.id.replace('tool-','')));
+    if(document.getElementById('reviewModal')?.classList.contains('flex')) closeReviewModal();
+    if(document.getElementById('serviceDetailsModal')?.classList.contains('flex')) closeServiceDetails();
+    if(document.getElementById('successModal')?.classList.contains('flex')) closeSuccessModal();
+  });
+
 </script>
 </body>
 </html>

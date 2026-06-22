@@ -644,6 +644,9 @@
     const map={all:'filter-all','ওয়েব ডেভেলপমেন্ট':'filter-web','AI Tools':'filter-ai','Facebook Tips':'filter-fb'};
     if(map[cat])document.getElementById(map[cat])?.classList.add('active-filter');
   };
+  // ── Load blog posts on page load ──────────────────────────────────────
+  window.addEventListener('load', () => { fetchPosts(); });
+  // Also call immediately for fast load
   fetchPosts();
 
   // ── Reviews ──────────────────────────────────────────────

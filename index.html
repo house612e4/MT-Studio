@@ -622,8 +622,21 @@
   window.fbSignOut=async()=>{await signOut(auth);showSuccessModal("লগআউট","আবার দেখা হবে! 👋");};
   let allPosts=[];
   async function fetchPosts(){
-    try{const q=query(collection(db,'blogPosts'),where('status','==','published'),orderBy('createdAt','desc'));const snap=await getDocs(q);allPosts=snap.docs.map(d=>({id:d.id,...d.data()}));renderPosts(allPosts);}
-    catch(e){document.getElementById('blogEmpty').classList.remove('hidden');document.getElementById('blogLoading')?.remove();}
+    try{
+      const q=query(collection(db,'blogPosts'),orderBy('createdAt','desc'));
+      const snap=await getDocs(q);
+      allPosts=snap.docs.map(d=>({id:d.id,...d.data()})).filter(p=>p.status==='published');
+      renderPosts(allPosts);
+    }catch(e){
+      try{
+        const snap=await getDocs(collection(db,'blogPosts'));
+        allPosts=snap.docs.map(d=>({id:d.id,...d.data()})).filter(p=>p.status==='published');
+        renderPosts(allPosts);
+      }catch(e2){
+        document.getElementById('blogEmpty').classList.remove('hidden');
+        document.getElementById('blogLoading')?.remove();
+      }
+    }
   }
   function renderPosts(posts){
     const grid=document.getElementById('blogGrid'),empty=document.getElementById('blogEmpty');
@@ -653,9 +666,9 @@
   // ── Reviews ──────────────────────────────────────────────
   async function fetchReviews(){
     try{
-      const q=query(collection(db,'reviews'),where('rating','>=',4),orderBy('createdAt','desc'),limit(9));
+      const q=query(collection(db,'reviews'),orderBy('createdAt','desc'),limit(20));
       const snap=await getDocs(q);
-      const reviews=snap.docs.map(d=>d.data());
+      const reviews=snap.docs.map(d=>d.data()).filter(r=>r.rating>=4).slice(0,9);
       if(reviews.length) renderReviews(reviews);
     }catch(e){ /* keep default testimonials if fetch fails */ }
   }
